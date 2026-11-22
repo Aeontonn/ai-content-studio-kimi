@@ -1,0 +1,25 @@
+{
+  "schema": "ai-content-studio/brand-kit@1",
+  "_example": "FICTIONAL sample brand used only by the examples. The real brand lives in content-studio/brand/brand-kit.json.",
+  "brand_name": "Calm Habits",
+  "handle": "@calmhabits.sample",
+  "website": "",
+  "language": "en",
+  "timezone": "Europe/Stockholm",
+  "platforms": ["instagram", "tiktok", "youtube_shorts", "email"],
+  "colors": {
+    "primary": "#2E3A33",
+    "secondary": "#EFE7DA",
+    "accent": "#C46A43",
+    "background": "#FAF6EF",
+    "text": "#1E2420",
+    "muted": "#6A706B"
+  },
+  "fonts": {
+    "heading": { "family": "", "file": "" },
+    "body": { "family": "", "file": "" }
+  },
+  "carousel": { "size": "1080x1350", "show_handle": true, "show_slide_numbers": true },
+  "reels": { "crosspost": ["tiktok", "youtube_shorts"] },
+  "schedule": { "frequency_preset": "balanced" }
+}

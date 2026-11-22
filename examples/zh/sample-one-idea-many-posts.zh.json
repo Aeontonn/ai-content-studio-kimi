@@ -1,0 +1,85 @@
+{
+  "schema": "ai-content-studio/one-idea-many-posts@1",
+  "_example": "Expected output for: 「用一个选题帮我生成几条不同平台的帖子：给糟糕的日子准备一个十分钟晨间版本」 (fictional brand 晨光慢习惯)",
+  "idea": "给糟糕的日子准备一个十分钟晨间版本",
+  "core_keyword": "十分钟",
+  "language": "zh-CN",
+  "posts": [
+    {
+      "id": "reel",
+      "format": "reel",
+      "platform": "instagram",
+      "hook": "这是我状态最差那天的全部晨间习惯：只要十分钟。",
+      "script": [
+        {"time": "0-2s", "visual": "计时器从 10:00 开始，台灯亮起", "voiceover": "这是我状态最差那天的全部晨间习惯。", "on_screen": "只要十分钟"},
+        {"time": "2-12s", "visual": "床头的水杯、拉开窗帘", "voiceover": "先开灯、喝水，两分钟。", "on_screen": "开灯 + 喝水"},
+        {"time": "12-30s", "visual": "跟着一首歌拉伸，角落里有计时器", "voiceover": "一首歌的时间拉伸，歌停就结束。", "on_screen": "一首歌"},
+        {"time": "30-40s", "visual": "在笔记本上写一行字", "voiceover": "在本子上写一行字，不是一页，是一行。", "on_screen": "一行字"},
+        {"time": "40-45s", "visual": "计时器归零，喝一口咖啡", "voiceover": "完整指南免费送你，主页链接领取。", "on_screen": "免费指南：主页链接"}
+      ],
+      "caption": "这是我状态最差那天的全部晨间习惯：十分钟，从头到尾。\n\n开灯喝水。跟着一首歌拉伸。在本子上写一行字。\n\n就是这个版本，扛得住睡过头、孩子生病和天亮得晚的冬天。完整指南免费：主页链接领取。",
+      "cta": "主页链接领取免费《十分钟晨间指南》",
+      "hashtags": ["#晨间习惯", "#慢生活", "#十分钟", "#morningroutine"]
+    },
+    {
+      "id": "carousel",
+      "format": "carousel",
+      "platform": "instagram",
+      "hook": "糟糕的日子，也有一个**十分钟**的版本",
+      "slides": [
+        {"type": "cover", "headline": "糟糕的日子，也有一个**十分钟**的版本"},
+        {"type": "text", "headline": "为什么要准备「最小版本」", "body": "完美的流程只在完美的早晨有用。最小版本让你哪天都不会断。"},
+        {"type": "list", "headline": "我的十分钟", "items": ["开灯 + 喝水（2 分钟）", "一首歌的拉伸（4 分钟）", "写一行字（4 分钟）"]},
+        {"type": "text", "headline": "规则只有一条", "body": "糟糕的日子只做最小版本，不内疚，不补课。"},
+        {"type": "cta", "headline": "收藏起来，下次睡过头时用", "button": "领取免费指南"}
+      ],
+      "caption": "糟糕的日子，不需要完美的晨间流程，只需要一个十分钟的最小版本。\n\n1. 开灯 + 喝水\n2. 一首歌的拉伸\n3. 写一行字\n\n收藏起来，下次睡过头的时候用。",
+      "cta": "收藏这一组",
+      "hashtags": ["#晨间习惯", "#习惯养成", "#慢生活"]
+    },
+    {
+      "id": "story",
+      "format": "story",
+      "platform": "instagram",
+      "hook": "今天早上你有几分钟？",
+      "frames": [
+        {"frame": 1, "visual": "窗外还黑，桌上一杯热水", "text": "今天早上你有几分钟？", "sticker": "poll: 不到十分钟 / 十分钟以上"},
+        {"frame": 2, "visual": "计时器 10:00", "text": "十分钟也够。我的最小版本：开灯、喝水、一首歌、一行字。"},
+        {"frame": 3, "visual": "指南第一页截图", "text": "完整版免费送你", "sticker": "link: 领取十分钟指南"}
+      ],
+      "cta": "投票，然后点链接领取指南"
+    },
+    {
+      "id": "email",
+      "format": "email",
+      "platform": "email",
+      "subject": "你的十分钟晨间版本",
+      "preview_text": "给最糟糕的早晨准备的习惯（附免费指南）",
+      "hook": "坚持完美晨间流程的第三天，我睡过头了四十分钟，差点就放弃了。",
+      "body": "开头：第三天睡过头的故事。\n核心：习惯要扛得住最糟糕的早晨，而不是最好的早晨。\n方法：十分钟版本三步走（开灯喝水 2 分钟，一首歌拉伸 4 分钟，写一行字 4 分钟）。\n按钮：领取免费《十分钟晨间指南》\n附言：回复我你的「最小版本」，每一封我都会看。",
+      "cta": "领取免费《十分钟晨间指南》"
+    },
+    {
+      "id": "tiktok",
+      "format": "reel",
+      "platform": "tiktok",
+      "caption": "状态最差那天的晨间习惯 只要十分钟 开灯喝水 一首歌 一行字 #晨间习惯 #慢生活 #十分钟",
+      "cta": "关注我，下周分享睡前版本"
+    },
+    {
+      "id": "shorts",
+      "format": "reel",
+      "platform": "youtube_shorts",
+      "title": "糟糕日子的十分钟晨间习惯（真实计时）",
+      "caption": "开灯喝水、一首歌拉伸、写一行字。",
+      "cta": "订阅，看更多慢习惯"
+    }
+  ],
+  "alt_hooks": [
+    {"type": "反常识 contrarian", "hook": "别再追求完美的晨间流程了。"},
+    {"type": "数字 specific", "hook": "十分钟，三件事，一个不会断的早晨。"},
+    {"type": "提问 question", "hook": "为什么你的晨间习惯一睡过头就全崩？"},
+    {"type": "身份 identity", "hook": "如果你不是早起型的人，这条给你。"},
+    {"type": "故事 story", "hook": "第三天，我睡过头了四十分钟。"}
+  ]
+}

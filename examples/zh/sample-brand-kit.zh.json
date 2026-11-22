@@ -1,0 +1,26 @@
+{
+  "schema": "ai-content-studio/brand-kit@1",
+  "_example": "FICTIONAL Chinese sample brand used only by the examples. 虚构的示例品牌，仅用于示例。",
+  "brand_name": "晨光慢习惯",
+  "handle": "@morninglight.sample",
+  "website": "",
+  "language": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "platforms": ["instagram", "tiktok", "youtube_shorts", "email"],
+  "colors": {
+    "primary": "#22344F",
+    "secondary": "#EEF1F5",
+    "accent": "#D0603E",
+    "background": "#FAFAF8",
+    "text": "#1B1D22",
+    "muted": "#666B73"
+  },
+  "fonts": {
+    "heading": { "family": "", "file": "" },
+    "body": { "family": "", "file": "" },
+    "cjk": { "family": "", "file": "" }
+  },
+  "carousel": { "size": "1080x1350", "show_handle": true, "show_slide_numbers": true },
+  "reels": { "crosspost": ["tiktok", "youtube_shorts"] },
+  "schedule": { "frequency_preset": "light" }
+}

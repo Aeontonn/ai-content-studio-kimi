@@ -1,0 +1,1707 @@
+{
+  "schema": "ai-content-studio/week-plan@1",
+  "week": "2026-W48",
+  "start_date": "2026-11-23",
+  "end_date": "2026-11-29",
+  "timezone": "Europe/Stockholm",
+  "brand": "Calm Habits",
+  "handle": "@calmhabits.sample",
+  "theme": "Calm mornings when it's dark out",
+  "goals": [
+    "Grow saves and shares",
+    "200 sign-ups for the free 10-minute morning guide"
+  ],
+  "campaigns": [],
+  "frequency": {
+    "mix": {
+      "reel": 3,
+      "story": 7,
+      "carousel": 2,
+      "email": 1
+    },
+    "total": 13
+  },
+  "items": [
+    {
+      "id": "2026W48-mon-story1",
+      "date": "2026-11-23",
+      "day": "mon",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "published",
+      "pillar": "Habits",
+      "campaign": "",
+      "title": "Monday check-in: calm or chaos?",
+      "hook": "Be honest: how did this morning start?",
+      "concept": "Open the week with a zero-effort poll that tells us how mornings actually feel in late November, and introduce the week's theme of dark-morning habits.",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "Dark kitchen window, steam rising from a mug, clock shows 07:00",
+          "text": "Be honest: how did this morning start?",
+          "sticker": "poll: Calm / Chaos"
+        },
+        {
+          "frame": 2,
+          "visual": "Same shot, a warm lamp switches on",
+          "text": "Dark mornings make everything harder. It's not just you."
+        },
+        {
+          "frame": 3,
+          "visual": "Hand opening the curtains to streetlight",
+          "text": "This week: tiny habits for dark mornings. First one drops at 12."
+        }
+      ],
+      "caption": "",
+      "cta": "Vote in the poll",
+      "hashtags": [],
+      "creative_direction": "Film all three frames in one take at the kitchen window before sunrise. Warm lamp light only, no ceiling light. Text lowercase, centered in the upper third.",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": true
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": true
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": true
+        },
+        {
+          "task": "Publish",
+          "done": true
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:25",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:24",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Plan frames",
+                "done": false
+              },
+              {
+                "task": "Capture or design frames (9:16)",
+                "done": false
+              },
+              {
+                "task": "Add interactive sticker (poll, quiz, question or link)",
+                "done": false
+              },
+              {
+                "task": "Publish",
+                "done": false
+              },
+              {
+                "task": "Add to Highlight if evergreen",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:25",
+          "note": "status -> published",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-mon-carousel1",
+      "date": "2026-11-23",
+      "day": "mon",
+      "time": "12:00",
+      "format": "carousel",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "published",
+      "pillar": "Habits",
+      "campaign": "",
+      "title": "5 tiny habits for dark mornings",
+      "hook": "5 tiny habits for **dark** November mornings",
+      "concept": "A save-worthy list of five habits that each take under two minutes and make dark mornings easier. Positions the account as realistic rather than hustle.",
+      "script": [
+        {
+          "slide": 1,
+          "type": "cover",
+          "kicker": "Dark mornings",
+          "headline": "5 tiny habits for **dark** November mornings",
+          "subhead": "Each one takes under 2 minutes"
+        },
+        {
+          "slide": 2,
+          "type": "text",
+          "headline": "1. Light **before** phone",
+          "body": "Switch on a warm lamp before you touch your phone. Light tells your brain the day has started."
+        },
+        {
+          "slide": 3,
+          "type": "text",
+          "headline": "2. Water on the nightstand",
+          "body": "Fill the glass the night before. Drink it before your feet touch the floor."
+        },
+        {
+          "slide": 4,
+          "type": "text",
+          "headline": "3. One song, not a playlist",
+          "body": "Pick one song that means 'get up'. When it ends, you're up."
+        },
+        {
+          "slide": 5,
+          "type": "text",
+          "headline": "4. Open the curtains anyway",
+          "body": "Even streetlight is light. It tells your body the night is over."
+        },
+        {
+          "slide": 6,
+          "type": "text",
+          "headline": "5. Decide breakfast **tonight**",
+          "body": "One less decision at 7 a.m. is a calmer 7 a.m."
+        },
+        {
+          "slide": 7,
+          "type": "list",
+          "headline": "Your dark-morning starter kit",
+          "items": [
+            "Light before phone",
+            "Water on the nightstand",
+            "One song, then up",
+            "Curtains open",
+            "Breakfast decided"
+          ]
+        },
+        {
+          "slide": 8,
+          "type": "cta",
+          "headline": "Save this for **tomorrow** morning",
+          "body": "Which one are you trying first? Comment 1-5.",
+          "button": "Follow for calm habits"
+        }
+      ],
+      "caption": "Dark mornings aren't a discipline problem. They're a light problem.\n\nFive tiny habits, each under 2 minutes:\n1. Light before phone\n2. Water on the nightstand\n3. One song, not a playlist\n4. Open the curtains, even in the dark\n5. Decide breakfast the night before\n\nSave this for tomorrow morning. Which one are you trying first? Comment 1-5.",
+      "cta": "Save it, then comment 1-5",
+      "hashtags": [
+        "#morningroutine",
+        "#darkmornings",
+        "#tinyhabits",
+        "#slowliving"
+      ],
+      "creative_direction": "Brand template: cover on deep green with terracotta emphasis, body slides on cream, recap slide as a numbered list. No photos needed. Keep every slide under 30 words.",
+      "checklist": [
+        {
+          "task": "Outline approved",
+          "done": true
+        },
+        {
+          "task": "Write slide copy",
+          "done": true
+        },
+        {
+          "task": "Design slides with brand kit",
+          "done": true
+        },
+        {
+          "task": "Proofread every slide",
+          "done": true
+        },
+        {
+          "task": "Caption, hashtags and alt text",
+          "done": true
+        },
+        {
+          "task": "Publish",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:25",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:24",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Outline approved",
+                "done": false
+              },
+              {
+                "task": "Write slide copy",
+                "done": false
+              },
+              {
+                "task": "Design slides with brand kit",
+                "done": false
+              },
+              {
+                "task": "Proofread every slide",
+                "done": false
+              },
+              {
+                "task": "Caption, hashtags and alt text",
+                "done": false
+              },
+              {
+                "task": "Publish",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:25",
+          "note": "status -> published",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-tue-story1",
+      "date": "2026-11-24",
+      "day": "tue",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "published",
+      "pillar": "Behind the scenes",
+      "campaign": "",
+      "title": "Poll results + filming day",
+      "hook": "62% of you said chaos. Same.",
+      "concept": "Close the loop on Monday's poll, show the reel being filmed to build anticipation, and learn how long their routines are with a quiz.",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "Screenshot of Monday's poll result",
+          "text": "62% of you said chaos. Same."
+        },
+        {
+          "frame": 2,
+          "visual": "Phone on tripod at the kitchen counter, ring light off, window light",
+          "text": "Filming why routines keep failing (it's not laziness)",
+          "sticker": "quiz: How long is your morning routine? Under 10 min / 10-30 / 30-60 / 60+"
+        },
+        {
+          "frame": 3,
+          "visual": "Close-up of coffee being poured",
+          "text": "Up at 18:00",
+          "sticker": "countdown: New reel"
+        }
+      ],
+      "caption": "",
+      "cta": "Answer the quiz and tap the countdown reminder",
+      "hashtags": [],
+      "creative_direction": "Real behind the scenes, no polish. Shoot frames 2-3 while setting up Tuesday's reel.",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": true
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": true
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": true
+        },
+        {
+          "task": "Publish",
+          "done": true
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:26",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:24",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Plan frames",
+                "done": false
+              },
+              {
+                "task": "Capture or design frames (9:16)",
+                "done": false
+              },
+              {
+                "task": "Add interactive sticker (poll, quiz, question or link)",
+                "done": false
+              },
+              {
+                "task": "Publish",
+                "done": false
+              },
+              {
+                "task": "Add to Highlight if evergreen",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:26",
+          "note": "status -> published",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-tue-reel1",
+      "date": "2026-11-24",
+      "day": "tue",
+      "time": "18:00",
+      "format": "reel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "youtube_shorts"
+      ],
+      "status": "ready",
+      "pillar": "Habits",
+      "campaign": "",
+      "title": "3 reasons your morning routine keeps failing",
+      "hook": "Your morning routine isn't failing because you're lazy.",
+      "concept": "Reframe failed routines as a design problem: copied from someone else, too long, and started too late (the night before). Edited from the raw talking-head footage of this week.",
+      "script": [
+        {
+          "time": "0-2s",
+          "visual": "Close-up, kitchen counter, morning light",
+          "voiceover": "Your morning routine isn't failing because you're lazy.",
+          "on_screen": "it's not laziness"
+        },
+        {
+          "time": "2-6s",
+          "visual": "Punch-in",
+          "voiceover": "Here are three reasons it keeps falling apart.",
+          "on_screen": "3 reasons"
+        },
+        {
+          "time": "6-17s",
+          "visual": "Wide, then B-roll of an alarm at 05:00",
+          "voiceover": "One: you copied someone else's routine. Start with one thing that already fits your actual morning.",
+          "on_screen": "1. it's not yours"
+        },
+        {
+          "time": "17-28s",
+          "visual": "Punch-in",
+          "voiceover": "Two: it's too long. Keep a ten-minute version for bad days.",
+          "on_screen": "2. it's too long"
+        },
+        {
+          "time": "28-40s",
+          "visual": "B-roll: phone face down on the nightstand",
+          "voiceover": "Three: it starts the night before. Pick a phone-down time and protect it like a meeting.",
+          "on_screen": "3. it starts the night before"
+        },
+        {
+          "time": "40-45s",
+          "visual": "Back to close-up",
+          "voiceover": "Make it yours, make it short, start the night before. Save this for tomorrow.",
+          "on_screen": "save for tomorrow"
+        }
+      ],
+      "caption": "Your morning routine isn't failing because you're lazy.\n\nIt's failing because:\n1. You copied someone else's\n2. It's way too long\n3. It starts at your alarm, not the night before\n\nSave this for tomorrow morning, and tell me: which one is yours?",
+      "cta": "Save this for tomorrow morning",
+      "hashtags": [
+        "#morningroutine",
+        "#habits",
+        "#selfimprovement",
+        "#slowliving"
+      ],
+      "creative_direction": "Talking head at the kitchen counter, phone at eye level, window light from the side. Cut with the AI Content Studio cut list: remove dead air, the retake of reason one and the 'um' before the hook. Alternate 100% / 112% punch-ins. Burned captions, lower-middle. Soft lo-fi music under the voice.",
+      "checklist": [
+        {
+          "task": "Script and hook approved",
+          "done": true
+        },
+        {
+          "task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)",
+          "done": true
+        },
+        {
+          "task": "Capture 3-5 B-roll clips",
+          "done": true
+        },
+        {
+          "task": "Edit: cuts, pacing, music",
+          "done": true
+        },
+        {
+          "task": "Subtitles and on-screen text",
+          "done": true
+        },
+        {
+          "task": "Choose cover frame",
+          "done": true
+        },
+        {
+          "task": "Caption, hashtags and alt text",
+          "done": true
+        },
+        {
+          "task": "Publish on Instagram",
+          "done": true
+        },
+        {
+          "task": "Cross-post to TikTok with native caption",
+          "done": true
+        },
+        {
+          "task": "Cross-post to YouTube Shorts with native caption",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [
+        "media/raw-morning.mp4"
+      ],
+      "platform_variants": {
+        "tiktok": {
+          "time": "19:00",
+          "caption": "your morning routine isn't failing because you're lazy. here's what's actually going on #morningroutine #habits"
+        },
+        "youtube_shorts": {
+          "time": "17:00",
+          "title": "Why your morning routine keeps failing (3 reasons)",
+          "caption": "Make it yours, make it short, start the night before."
+        }
+      },
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:26",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "footage": [],
+            "platform_variants": {
+              "tiktok": {
+                "time": "19:00",
+                "caption": ""
+              },
+              "youtube_shorts": {
+                "time": "17:00",
+                "caption": ""
+              }
+            }
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:25",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Script and hook approved",
+                "done": false
+              },
+              {
+                "task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)",
+                "done": false
+              },
+              {
+                "task": "Capture 3-5 B-roll clips",
+                "done": false
+              },
+              {
+                "task": "Edit: cuts, pacing, music",
+                "done": false
+              },
+              {
+                "task": "Subtitles and on-screen text",
+                "done": false
+              },
+              {
+                "task": "Choose cover frame",
+                "done": false
+              },
+              {
+                "task": "Caption, hashtags and alt text",
+                "done": false
+              },
+              {
+                "task": "Publish on Instagram",
+                "done": false
+              },
+              {
+                "task": "Cross-post to TikTok with native caption",
+                "done": false
+              },
+              {
+                "task": "Cross-post to YouTube Shorts with native caption",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:26",
+          "note": "status -> ready",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-wed-story1",
+      "date": "2026-11-25",
+      "day": "wed",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "ready",
+      "pillar": "Mindset",
+      "campaign": "",
+      "title": "Which reason was yours?",
+      "hook": "Which reason was yours?",
+      "concept": "Recycle Tuesday's reel into Stories for the followers who missed it, and collect answers that feed Friday's Q&A.",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "Reshare of Tuesday's reel",
+          "text": "In case you missed it",
+          "sticker": "link to reel"
+        },
+        {
+          "frame": 2,
+          "visual": "Plain cream background",
+          "text": "Which reason was yours?",
+          "sticker": "poll: Copied / Too long / Night before"
+        },
+        {
+          "frame": 3,
+          "visual": "Notebook with a short handwritten list",
+          "text": "What does YOUR 10-minute version look like?",
+          "sticker": "question box"
+        }
+      ],
+      "caption": "",
+      "cta": "Vote and answer the question box",
+      "hashtags": [],
+      "creative_direction": "Brand cream background frames, handwritten-style text on frame 3.",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": true
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": true
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": true
+        },
+        {
+          "task": "Publish",
+          "done": true
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:26",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:25",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Plan frames",
+                "done": false
+              },
+              {
+                "task": "Capture or design frames (9:16)",
+                "done": false
+              },
+              {
+                "task": "Add interactive sticker (poll, quiz, question or link)",
+                "done": false
+              },
+              {
+                "task": "Publish",
+                "done": false
+              },
+              {
+                "task": "Add to Highlight if evergreen",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:26",
+          "note": "status -> ready",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-wed-carousel1",
+      "date": "2026-11-25",
+      "day": "wed",
+      "time": "12:00",
+      "format": "carousel",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "ready",
+      "pillar": "Habits",
+      "campaign": "",
+      "title": "Why your morning routine keeps failing (carousel)",
+      "hook": "Your routine isn't failing because you're **lazy**",
+      "concept": "Tuesday's reel repurposed into an 8-slide carousel so the three reasons can be saved and shared. Spec: examples/sample-carousel.json.",
+      "script": [
+        {
+          "slide": 1,
+          "type": "cover",
+          "headline": "Your routine isn't failing because you're **lazy**"
+        },
+        {
+          "slide": 2,
+          "type": "text",
+          "headline": "The 5 a.m. alarm. The cold plunge. The journal."
+        },
+        {
+          "slide": 3,
+          "type": "text",
+          "headline": "1. You copied someone else's routine"
+        },
+        {
+          "slide": 4,
+          "type": "text",
+          "headline": "2. You made it way too long"
+        },
+        {
+          "slide": 5,
+          "type": "text",
+          "headline": "3. It starts the night before"
+        },
+        {
+          "slide": 6,
+          "type": "list",
+          "headline": "The fix, on one slide"
+        },
+        {
+          "slide": 7,
+          "type": "quote",
+          "headline": "A routine you can do on your worst day beats a perfect one you skip."
+        },
+        {
+          "slide": 8,
+          "type": "cta",
+          "headline": "Save this for tomorrow morning"
+        }
+      ],
+      "caption": "Your morning routine isn't failing because you're lazy. It's failing because it was designed for someone else's life.\n\nThe three fixes:\n1. Make it yours\n2. Make it short\n3. Start the night before\n\nSave this for tomorrow morning. Which ONE habit would you keep?",
+      "cta": "Save this, then comment the one habit you'd keep",
+      "hashtags": [
+        "#morningroutine",
+        "#habits",
+        "#productivitytips"
+      ],
+      "creative_direction": "Rendered with carousel.py from examples/sample-carousel.json (PNG + editable PPTX). Cover on deep green; recap slide is the save magnet.",
+      "checklist": [
+        {
+          "task": "Outline approved",
+          "done": true
+        },
+        {
+          "task": "Write slide copy",
+          "done": true
+        },
+        {
+          "task": "Design slides with brand kit",
+          "done": true
+        },
+        {
+          "task": "Proofread every slide",
+          "done": true
+        },
+        {
+          "task": "Caption, hashtags and alt text",
+          "done": true
+        },
+        {
+          "task": "Publish",
+          "done": true
+        }
+      ],
+      "thumbnail": "assets/sample-carousel-cover.jpg",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "Alt text: Eight-slide carousel on three reasons morning routines fail and how to fix each.",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:26",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "repurposed_from": null,
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "thumbnail": "",
+            "notes": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:25",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "Outline approved",
+                "done": false
+              },
+              {
+                "task": "Write slide copy",
+                "done": false
+              },
+              {
+                "task": "Design slides with brand kit",
+                "done": false
+              },
+              {
+                "task": "Proofread every slide",
+                "done": false
+              },
+              {
+                "task": "Caption, hashtags and alt text",
+                "done": false
+              },
+              {
+                "task": "Publish",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:26",
+          "note": "status -> ready",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ],
+      "repurposed_from": "2026W48-tue-reel1"
+    },
+    {
+      "id": "2026W48-thu-email1",
+      "date": "2026-11-26",
+      "day": "thu",
+      "time": "08:00",
+      "format": "email",
+      "platforms": [
+        "email"
+      ],
+      "status": "drafted",
+      "pillar": "Habits",
+      "campaign": "10-minute morning guide",
+      "title": "Newsletter: your 10-minute bad-day morning",
+      "hook": "On day 3 of my 'perfect' routine, I overslept by 40 minutes and almost quit.",
+      "concept": "Tell the story behind the 'too long' reason, introduce the non-negotiable 10-minute version, and launch the free guide to grow the list.",
+      "script": [
+        "Opening: the day-3 oversleep story (3-4 sentences, honest and a little funny)",
+        "The insight: a routine has to survive your worst morning, not your best one",
+        "The 10-minute version in 3 steps: light + water (2 min), one song of stretching (4 min), one line in a notebook (4 min)",
+        "CTA button: Get the free 10-minute morning guide",
+        "P.S. Reply and tell me your one non-negotiable. I read every reply."
+      ],
+      "caption": "",
+      "cta": "Download the free 10-minute morning guide",
+      "hashtags": [],
+      "creative_direction": "Plain-text style email with one photo of the notebook and mug. One button. Under 350 words.",
+      "checklist": [
+        {
+          "task": "Subject line and preview text",
+          "done": false
+        },
+        {
+          "task": "Draft body",
+          "done": false
+        },
+        {
+          "task": "Add links and CTA button",
+          "done": false
+        },
+        {
+          "task": "Send test email and check on mobile",
+          "done": false
+        },
+        {
+          "task": "Schedule send",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:24",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "campaign": "",
+            "status": "planned",
+            "subject": "",
+            "preview_text": "",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        }
+      ],
+      "subject": "Your 10-minute bad-day morning",
+      "preview_text": "The routine for mornings when nothing goes to plan (free guide inside)"
+    },
+    {
+      "id": "2026W48-thu-story1",
+      "date": "2026-11-26",
+      "day": "thu",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "drafted",
+      "pillar": "Habits",
+      "campaign": "10-minute morning guide",
+      "title": "Newsletter is out: free guide",
+      "hook": "I wrote you a 10-minute morning.",
+      "concept": "Drive newsletter sign-ups on launch day with a direct, friendly link sticker sequence.",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "Notebook page titled 'my 10-minute morning'",
+          "text": "I wrote you a 10-minute morning."
+        },
+        {
+          "frame": 2,
+          "visual": "Phone showing the guide's first page",
+          "text": "For the mornings when nothing goes to plan. It's free.",
+          "sticker": "link: Get the guide"
+        },
+        {
+          "frame": 3,
+          "visual": "Selfie with mug, relaxed",
+          "text": "Tell me if you try it",
+          "sticker": "emoji slider"
+        }
+      ],
+      "caption": "",
+      "cta": "Tap the link sticker to get the guide",
+      "hashtags": [],
+      "creative_direction": "Warm, handheld, natural light. Link sticker in the middle of frame 2, away from the edges.",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": false
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": false
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": false
+        },
+        {
+          "task": "Publish",
+          "done": false
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:24",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "campaign": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-thu-reel1",
+      "date": "2026-11-26",
+      "day": "thu",
+      "time": "18:00",
+      "format": "reel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "youtube_shorts"
+      ],
+      "status": "drafted",
+      "pillar": "Slow living",
+      "campaign": "10-minute morning guide",
+      "title": "My 10-minute bad-day morning, in real time",
+      "hook": "This is my entire routine on a bad day. It takes 10 minutes.",
+      "concept": "Show the non-negotiable routine in real time with a visible timer, proving it fits any morning. Soft-sells the free guide.",
+      "script": [
+        {
+          "time": "0-2s",
+          "visual": "Timer at 10:00 starts, lamp clicks on",
+          "voiceover": "This is my entire routine on a bad day.",
+          "on_screen": "10 minutes. that's it."
+        },
+        {
+          "time": "2-12s",
+          "visual": "Water glass from the nightstand, curtains opening",
+          "voiceover": "Light and water first. Two minutes.",
+          "on_screen": "light + water"
+        },
+        {
+          "time": "12-30s",
+          "visual": "Stretching to one song, timer in the corner",
+          "voiceover": "One song of stretching. When it ends, I'm done.",
+          "on_screen": "one song"
+        },
+        {
+          "time": "30-40s",
+          "visual": "Writing one line in a notebook",
+          "voiceover": "One line in my notebook. Not a page. A line.",
+          "on_screen": "one line"
+        },
+        {
+          "time": "40-45s",
+          "visual": "Timer hits 00:00, sip of coffee",
+          "voiceover": "The full guide is free. Link in bio.",
+          "on_screen": "free guide: link in bio"
+        }
+      ],
+      "caption": "My whole routine on a bad day. 10 minutes, start to finish.\n\nLight and water. One song of stretching. One line in a notebook.\n\nThat's the version that survives oversleeping, sick kids and dark Novembers. The full guide is free: link in bio.",
+      "cta": "Get the free guide: link in bio",
+      "hashtags": [
+        "#morningroutine",
+        "#slowmorning",
+        "#10minutes",
+        "#slowliving"
+      ],
+      "creative_direction": "Voice-over on B-roll, no talking head. Overhead and side angles, real-time timer overlay top-left inside the safe zone. Calm acoustic track. Natural light, cream and green tones.",
+      "checklist": [
+        {
+          "task": "Script and hook approved",
+          "done": false
+        },
+        {
+          "task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)",
+          "done": false
+        },
+        {
+          "task": "Capture 3-5 B-roll clips",
+          "done": false
+        },
+        {
+          "task": "Edit: cuts, pacing, music",
+          "done": false
+        },
+        {
+          "task": "Subtitles and on-screen text",
+          "done": false
+        },
+        {
+          "task": "Choose cover frame",
+          "done": false
+        },
+        {
+          "task": "Caption, hashtags and alt text",
+          "done": false
+        },
+        {
+          "task": "Publish on Instagram",
+          "done": false
+        },
+        {
+          "task": "Cross-post to TikTok with native caption",
+          "done": false
+        },
+        {
+          "task": "Cross-post to YouTube Shorts with native caption",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {
+        "tiktok": {
+          "time": "19:00",
+          "caption": "my entire morning routine on a bad day. 10 minutes. free guide in bio #morningroutine #slowliving"
+        },
+        "youtube_shorts": {
+          "time": "17:00",
+          "title": "My 10-minute morning routine for bad days",
+          "caption": "Light, water, one song, one line."
+        }
+      },
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:27",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "campaign": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "platform_variants": {
+              "tiktok": {
+                "time": "19:00",
+                "caption": ""
+              },
+              "youtube_shorts": {
+                "time": "17:00",
+                "caption": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-fri-story1",
+      "date": "2026-11-27",
+      "day": "fri",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "drafted",
+      "pillar": "Mindset",
+      "campaign": "",
+      "title": "Friday Q&A: your morning questions",
+      "hook": "You asked, I answer (honestly).",
+      "concept": "Answer three questions from Monday's and Wednesday's question boxes. Builds trust and feeds next week's ideas.",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "Question sticker reply: 'what if I have kids?'",
+          "text": "You asked, I answer (honestly).",
+          "sticker": ""
+        },
+        {
+          "frame": 2,
+          "visual": "Talking to camera, 15 s",
+          "text": "Kids? Do the 10-minute version after drop-off. Mornings can start at 9."
+        },
+        {
+          "frame": 3,
+          "visual": "Reply: 'I always snooze'",
+          "text": "Put the alarm across the room, next to the water glass."
+        },
+        {
+          "frame": 4,
+          "visual": "Reply: 'is 5 a.m. better?'",
+          "text": "Only if you go to bed at 21. Sleep wins.",
+          "sticker": "question box: Ask me anything for next Friday"
+        }
+      ],
+      "caption": "",
+      "cta": "Send a question for next Friday",
+      "hashtags": [],
+      "creative_direction": "Use real questions from the boxes (ask permission before showing names). Talking-head frames filmed in one batch.",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": false
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": false
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": false
+        },
+        {
+          "task": "Publish",
+          "done": false
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:27",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:27",
+          "note": "moved",
+          "previous": {
+            "day": "fri",
+            "time": "08:30",
+            "date": "2026-11-27"
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:27",
+          "note": "moved",
+          "previous": {
+            "day": "sat",
+            "time": "19:00",
+            "date": "2026-11-28"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-sat-story1",
+      "date": "2026-11-28",
+      "day": "sat",
+      "time": "10:00",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "planned",
+      "pillar": "Behind the scenes",
+      "campaign": "",
+      "title": "Weekend slow-morning behind the scenes",
+      "hook": "",
+      "concept": "",
+      "script": "",
+      "caption": "",
+      "cta": "",
+      "hashtags": [],
+      "creative_direction": "",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": false
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": false
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": false
+        },
+        {
+          "task": "Publish",
+          "done": false
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:29",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:00:26",
+          "note": "status -> ready",
+          "previous": {
+            "status": "planned"
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:00:27",
+          "note": "status -> planned",
+          "previous": {
+            "status": "ready"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-sat-reel1",
+      "date": "2026-11-28",
+      "day": "sat",
+      "time": "11:00",
+      "format": "reel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "youtube_shorts"
+      ],
+      "status": "drafted",
+      "pillar": "Slow living",
+      "campaign": "",
+      "title": "3 things I stopped doing before 9 a.m.",
+      "hook": "I stopped doing these 3 things before 9 a.m. My mornings got quieter.",
+      "concept": "A 'stop list' from personal experience: checking email in bed, reading the news, and planning the entire day. Relatable and shareable, about subtraction rather than adding habits.",
+      "script": [
+        {
+          "time": "0-2s",
+          "visual": "Phone screen with 37 unread emails, then the phone is turned face down",
+          "voiceover": "I stopped doing these three things before 9 a.m.",
+          "on_screen": "3 things I quit before 9"
+        },
+        {
+          "time": "2-12s",
+          "visual": "Bed, phone stays face down on the nightstand",
+          "voiceover": "Checking email in bed. Nothing in there can't wait an hour.",
+          "on_screen": "1. email in bed"
+        },
+        {
+          "time": "12-22s",
+          "visual": "Radio or news app closed, kettle on",
+          "voiceover": "Reading the news first thing. I read it at lunch now.",
+          "on_screen": "2. the news"
+        },
+        {
+          "time": "22-34s",
+          "visual": "A to-do list cut down to three lines",
+          "voiceover": "Planning the entire day. I pick one thing that matters. The rest finds its place.",
+          "on_screen": "3. planning everything"
+        },
+        {
+          "time": "34-38s",
+          "visual": "Window, coffee, quiet",
+          "voiceover": "Which one would you quit first?",
+          "on_screen": "which one first?"
+        }
+      ],
+      "caption": "Three things I stopped doing before 9 a.m.:\n\n1. Checking email in bed\n2. Reading the news\n3. Planning the entire day\n\nMy mornings didn't get longer. They got quieter.\n\nWhich one would you quit first? Send this to the friend who checks email before brushing their teeth.",
+      "cta": "Share it with a friend who needs it",
+      "hashtags": [
+        "#slowliving",
+        "#morningroutine",
+        "#digitalwellbeing",
+        "#mindfulmornings"
+      ],
+      "creative_direction": "Voice-over with slow, quiet B-roll in the bedroom and kitchen. Soft morning light, minimal props. Text pops on each number. Ends on a still shot to encourage a loop.",
+      "checklist": [
+        {
+          "task": "Script and hook approved",
+          "done": false
+        },
+        {
+          "task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)",
+          "done": false
+        },
+        {
+          "task": "Capture 3-5 B-roll clips",
+          "done": false
+        },
+        {
+          "task": "Edit: cuts, pacing, music",
+          "done": false
+        },
+        {
+          "task": "Subtitles and on-screen text",
+          "done": false
+        },
+        {
+          "task": "Choose cover frame",
+          "done": false
+        },
+        {
+          "task": "Caption, hashtags and alt text",
+          "done": false
+        },
+        {
+          "task": "Publish on Instagram",
+          "done": false
+        },
+        {
+          "task": "Cross-post to TikTok with native caption",
+          "done": false
+        },
+        {
+          "task": "Cross-post to YouTube Shorts with native caption",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {
+        "tiktok": {
+          "time": "19:00",
+          "caption": "3 things i stopped doing before 9am and my mornings got so much quieter #slowliving #morningroutine"
+        },
+        "youtube_shorts": {
+          "time": "17:00",
+          "title": "3 things I stopped doing before 9 a.m.",
+          "caption": ""
+        }
+      },
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:24",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "platform_variants": {
+              "tiktok": {
+                "time": "19:00",
+                "caption": ""
+              },
+              "youtube_shorts": {
+                "time": "17:00",
+                "caption": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W48-sun-story1",
+      "date": "2026-11-29",
+      "day": "sun",
+      "time": "10:00",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "planned",
+      "pillar": "Slow living",
+      "campaign": "",
+      "title": "Sunday reset: prep for Monday morning",
+      "hook": "",
+      "concept": "",
+      "script": "",
+      "caption": "",
+      "cta": "",
+      "hashtags": [],
+      "creative_direction": "",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": false
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": false
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": false
+        },
+        {
+          "task": "Publish",
+          "done": false
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:00:24",
+      "updated_at": "2026-11-21T21:00:24",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:00:24",
+          "note": "first draft",
+          "previous": {
+            "title": "",
+            "pillar": ""
+          }
+        }
+      ]
+    }
+  ],
+  "removed": [
+    {
+      "id": "2026W48-sun-story2",
+      "date": "2026-11-29",
+      "day": "sun",
+      "time": "19:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "planned",
+      "pillar": "",
+      "campaign": "",
+      "title": "Extra",
+      "hook": "",
+      "concept": "",
+      "script": "",
+      "caption": "",
+      "cta": "",
+      "hashtags": [],
+      "creative_direction": "",
+      "checklist": [
+        {
+          "task": "Plan frames",
+          "done": false
+        },
+        {
+          "task": "Capture or design frames (9:16)",
+          "done": false
+        },
+        {
+          "task": "Add interactive sticker (poll, quiz, question or link)",
+          "done": false
+        },
+        {
+          "task": "Publish",
+          "done": false
+        },
+        {
+          "task": "Add to Highlight if evergreen",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 1,
+      "created_at": "2026-11-21T21:00:28",
+      "updated_at": "2026-11-21T21:00:28",
+      "history": [],
+      "removed_at": "2026-11-21T21:00:28"
+    }
+  ],
+  "created_at": "2026-11-21T21:00:24",
+  "updated_at": "2026-11-21T21:00:29"
+}

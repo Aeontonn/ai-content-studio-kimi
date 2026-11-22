@@ -1,0 +1,60 @@
+{
+  "schema": "ai-content-studio/carousel@1",
+  "title": "Why your morning routine keeps failing",
+  "source": "sample-transcript.srt (repurposed)",
+  "size": "1080x1350",
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "Morning routines",
+      "headline": "Your routine isn't failing because you're **lazy**",
+      "subhead": "3 reasons it keeps falling apart, and the fix for each",
+      "notes": "Cover = the reel's hook reframed as a promise. Keep under 10 words in the headline."
+    },
+    {
+      "type": "text",
+      "headline": "The 5 a.m. alarm. The cold plunge. The journal.",
+      "body": "And by Thursday it's gone. Again.\nIt's not a discipline problem. It's a design problem.",
+      "notes": "Relatable tension: name the exact thing they tried."
+    },
+    {
+      "type": "text",
+      "headline": "1. You copied **someone else's** routine",
+      "body": "Their mornings aren't your mornings. Start with one habit that already fits the morning you actually have."
+    },
+    {
+      "type": "text",
+      "headline": "2. You made it **way too long**",
+      "body": "A 90-minute routine dies the first time you oversleep. Build a 10-minute version for bad days: the non-negotiable one."
+    },
+    {
+      "type": "text",
+      "headline": "3. It starts **the night before**",
+      "body": "If you scroll until 1 a.m., no routine can save you. Pick a phone-down time and protect it like a meeting."
+    },
+    {
+      "type": "list",
+      "headline": "The fix, on one slide",
+      "items": [
+        "Make it **yours**: one habit that already fits",
+        "Make it **short**: a 10-minute bad-day version",
+        "Start **the night before**: phone down at a set time"
+      ],
+      "notes": "Recap slide = the most saved slide. Make it screenshot-worthy."
+    },
+    {
+      "type": "quote",
+      "quote": "A routine you can do on your **worst** day beats a perfect one you skip.",
+      "attribution": "Calm Habits"
+    },
+    {
+      "type": "cta",
+      "headline": "Save this for **tomorrow morning**",
+      "body": "Then tell me in the comments: which ONE habit would you keep?",
+      "button": "Follow for calm habits"
+    }
+  ],
+  "caption": "Your morning routine isn't failing because you're lazy. It's failing because it was designed for someone else's life.\n\nThe three fixes:\n1. Make it yours: start with one habit that already fits\n2. Make it short: keep a 10-minute version for bad days\n3. Start the night before: phone down at a set time\n\nSave this for tomorrow morning. Which ONE habit would you keep? Tell me below.",
+  "hashtags": ["#morningroutine", "#habits", "#slowliving", "#selfimprovement", "#productivitytips"],
+  "alt_text": "Eight-slide carousel: three reasons morning routines fail (copied routine, too long, no evening prep) and a one-slide recap of the fixes."
+}

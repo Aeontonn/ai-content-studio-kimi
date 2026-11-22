@@ -1,0 +1,10 @@
+# AI Content Studio (Kimi edition) - optional video packages
+#   python -m pip install -r requirements-video.txt
+#
+# ffmpeg: needed to read, analyze and render video. Either install ffmpeg itself
+#   Windows: winget install Gyan.FFmpeg    macOS: brew install ffmpeg    Linux: apt install ffmpeg
+# or use this Python package, which bundles a ready-made ffmpeg:
+imageio-ffmpeg>=0.4.9
+# Automatic speech-to-text (English, Chinese and many more). Downloads a speech model on first use
+# (about 460 MB for the default "small" model; needs internet once).
+faster-whisper>=1.0

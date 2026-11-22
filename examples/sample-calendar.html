@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content Calendar</title>
+<style>
+:root {
+  --bg: #F6F4F0;
+  --surface: #FFFFFF;
+  --surface-2: #F0EDE7;
+  --text: #1C1B1F;
+  --muted: #6E6A73;
+  --line: #E4DFD7;
+  --accent: #E26D5A;
+  --accent-ink: #FFFFFF;
+  --shadow: 0 1px 2px rgba(28, 27, 31, .06), 0 4px 14px rgba(28, 27, 31, .06);
+  --reel: #D9467A;
+  --story: #E8962E;
+  --carousel: #6A5AE0;
+  --email: #1B9A86;
+  --s-planned: #8D8A93;
+  --s-drafted: #3A7BE0;
+  --s-ready: #D98B0B;
+  --s-published: #1F9D55;
+  --radius: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141317;
+    --surface: #1E1D22;
+    --surface-2: #27262C;
+    --text: #F2F0F4;
+    --muted: #A6A2AD;
+    --line: #34323A;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
+    --reel: #F0679A;
+    --story: #F4AE55;
+    --carousel: #8F83F5;
+    --email: #3CC2AB;
+    --s-planned: #9C99A3;
+    --s-drafted: #6EA2F2;
+    --s-ready: #F2B544;
+    --s-published: #4CC37E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141317;
+  --surface: #1E1D22;
+  --surface-2: #27262C;
+  --text: #F2F0F4;
+  --muted: #A6A2AD;
+  --line: #34323A;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
+  --reel: #F0679A;
+  --story: #F4AE55;
+  --carousel: #8F83F5;
+  --email: #3CC2AB;
+  --s-planned: #9C99A3;
+  --s-drafted: #6EA2F2;
+  --s-ready: #F2B544;
+  --s-published: #4CC37E;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; }
+.wrap { max-width: 1480px; margin: 0 auto; padding: 24px 24px 48px; }
+
+/* header */
+.top { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; margin-bottom: 18px; }
+.eyebrow { font-size: 13px; color: var(--muted); letter-spacing: .02em; display: flex; gap: 8px; flex-wrap: wrap; }
+.eyebrow b { color: var(--text); font-weight: 600; }
+h1 { font-size: clamp(26px, 3.2vw, 38px); line-height: 1.1; margin: 4px 0 6px; letter-spacing: -.02em; }
+h1 .range { color: var(--muted); font-weight: 500; }
+.theme-line { color: var(--muted); max-width: 70ch; }
+.theme-line b { color: var(--text); font-weight: 600; }
+.progress { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 300px; box-shadow: var(--shadow); }
+.counter { display: flex; align-items: baseline; gap: 6px; }
+.counter strong { font-size: 32px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.counter span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { display: flex; height: 8px; border-radius: 99px; overflow: hidden; background: var(--surface-2); margin: 10px 0 8px; }
+.bar i { display: block; height: 100%; }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+.legend button { background: none; border: 0; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; color: var(--muted); }
+.legend button[aria-pressed="true"] { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+/* toolbar */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 16px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 6px 12px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; font-size: 13.5px; }
+.chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.spacer { flex: 1; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 7px 12px; cursor: pointer; font-size: 13.5px; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.notice { display: none; background: var(--surface); border: 1px dashed var(--accent); border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+.notice.show { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+/* week grid */
+.week-scroll { overflow-x: auto; padding-bottom: 6px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(158px, 1fr)); gap: 12px; min-width: 1120px; }
+.day { background: var(--surface-2); border-radius: var(--radius); padding: 10px; min-height: 240px; display: flex; flex-direction: column; gap: 10px; }
+.day.today { outline: 2px solid var(--accent); outline-offset: -2px; }
+.day-head { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 4px 0; }
+.day-name { font-weight: 650; }
+.day-date { color: var(--muted); font-size: 13px; }
+.day-count { font-size: 12px; color: var(--muted); }
+.empty { color: var(--muted); font-size: 13px; padding: 16px 6px; text-align: center; border: 1px dashed var(--line); border-radius: 10px; }
+
+/* card */
+.card { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; cursor: pointer; border: 1px solid transparent; transition: transform .12s ease, border-color .12s ease; display: flex; flex-direction: column; }
+.card:hover, .card:focus-visible { transform: translateY(-2px); border-color: var(--line); outline: none; }
+.card.is-published { opacity: .78; }
+.thumb { position: relative; aspect-ratio: 4 / 5; background: var(--fmt); overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph { position: absolute; inset: 0; padding: 34px 12px 12px; color: #fff; display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--fmt) 70%, #ffffff) 0%, var(--fmt) 55%, color-mix(in srgb, var(--fmt) 70%, #000000) 100%); }
+.ph svg { position: absolute; right: -14px; top: 22px; width: 96px; height: 96px; opacity: .22; }
+.ph p { margin: 0; font-weight: 650; font-size: 14px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 2px rgba(0,0,0,.18); }
+.badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.55); color: #fff; font-size: 11.5px; font-weight: 650; letter-spacing: .03em; text-transform: uppercase; padding: 3px 8px 3px 7px; border-radius: 99px; display: inline-flex; gap: 5px; align-items: center; backdrop-filter: blur(4px); }
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--fmt); box-shadow: 0 0 0 1.5px #fff; }
+.time { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,.92); color: #1C1B1F; font-size: 12px; font-weight: 650; padding: 3px 7px; border-radius: 99px; font-variant-numeric: tabular-nums; }
+.card-body { padding: 9px 10px 10px; display: flex; flex-direction: column; gap: 7px; }
+.card-title { margin: 0; font-size: 13.5px; font-weight: 620; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-meta { display: flex; justify-content: space-between; gap: 6px; font-size: 11.5px; color: var(--muted); }
+.status { align-self: flex-start; border: 0; border-radius: 99px; padding: 3px 9px 3px 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: inline-flex; gap: 6px; align-items: center;
+  background: color-mix(in srgb, var(--st) 16%, transparent); color: var(--st); }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--st); }
+.fmt-reel { --fmt: var(--reel); } .fmt-story { --fmt: var(--story); } .fmt-carousel { --fmt: var(--carousel); } .fmt-email { --fmt: var(--email); }
+.st-planned { --st: var(--s-planned); } .st-drafted { --st: var(--s-drafted); } .st-ready { --st: var(--s-ready); } .st-published { --st: var(--s-published); }
+
+/* dialog */
+dialog { border: 0; padding: 0; border-radius: 18px; width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 48px); background: var(--surface); color: var(--text); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+dialog::backdrop { background: rgba(20, 19, 23, .55); }
+.dlg-head { position: sticky; top: 0; background: var(--surface); padding: 18px 20px 12px; border-bottom: 1px solid var(--line); z-index: 1; }
+.dlg-head h2 { margin: 6px 0 10px; font-size: 21px; line-height: 1.25; }
+.dlg-sub { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 99px; padding: 3px 9px; font-size: 12px; font-weight: 650; background: color-mix(in srgb, var(--fmt) 16%, transparent); color: var(--fmt); text-transform: uppercase; letter-spacing: .03em; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button { border: 0; background: none; padding: 6px 11px; cursor: pointer; font-size: 13px; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--st); color: #fff; font-weight: 600; }
+.dlg-body { padding: 6px 20px 8px; }
+.field { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.field:last-child { border-bottom: 0; }
+.field h4 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+.field .txt { white-space: pre-wrap; }
+.field ol, .field ul { margin: 0; padding-left: 20px; }
+.field li { margin: 4px 0; }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; font-size: 14px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; white-space: pre-wrap; }
+.copy { border: 1px solid var(--line); background: none; border-radius: 8px; padding: 2px 8px; font-size: 11.5px; cursor: pointer; text-transform: none; letter-spacing: 0; color: var(--muted); }
+.checks label { display: flex; gap: 9px; align-items: flex-start; padding: 4px 0; cursor: pointer; }
+.checks input { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; }
+.checks .done span { text-decoration: line-through; color: var(--muted); }
+.dlg-foot { position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--line); padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+textarea.out { width: 100%; min-height: 160px; font: 12.5px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px); background: var(--text); color: var(--bg); padding: 9px 14px; border-radius: 10px; font-size: 14px; opacity: 0; transition: .2s; pointer-events: none; z-index: 10; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+footer { margin-top: 22px; color: var(--muted); font-size: 12.5px; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 16px 16px 40px; }
+  .top { grid-template-columns: 1fr; }
+  .progress { min-width: 0; }
+  .week-scroll { overflow: visible; }
+  .week { grid-template-columns: 1fr; min-width: 0; }
+  .day { min-height: 0; }
+  .day-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kv { grid-template-columns: 78px 1fr; font-size: 13.5px; }
+}
+@media print {
+  body { background: #fff; }
+  .toolbar, .notice, .status, footer { display: none !important; }
+  .week-scroll { overflow: visible; }
+  .week { min-width: 0; }
+  .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="title"></h1>
+      <div class="theme-line" id="themeLine"></div>
+    </div>
+    <div class="progress" aria-live="polite">
+      <div class="counter"><strong id="doneCount">0</strong><span id="totalCount">/ 0 published</span></div>
+      <div class="bar" id="bar"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </header>
+
+  <div class="toolbar" id="toolbar"></div>
+  <div class="notice" id="notice"></div>
+
+  <div class="week-scroll"><main class="week" id="week"></main></div>
+
+  <footer id="foot"></footer>
+</div>
+
+<dialog id="detail" aria-labelledby="dlgTitle"></dialog>
+<dialog id="exportDlg" aria-labelledby="expTitle"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const PLAN = {"schema": "ai-content-studio/week-plan@1", "week": "2026-W48", "start_date": "2026-11-23", "end_date": "2026-11-29", "timezone": "Europe/Stockholm", "brand": "Calm Habits", "handle": "@calmhabits.sample", "theme": "Calm mornings when it's dark out", "goals": ["Grow saves and shares", "200 sign-ups for the free 10-minute morning guide"], "campaigns": [], "frequency": {"mix": {"reel": 3, "story": 7, "carousel": 2, "email": 1}, "total": 13}, "items": [{"id": "2026W48-mon-story1", "date": "2026-11-23", "day": "mon", "time": "08:30", "format": "story", "platforms": ["instagram"], "status": "published", "pillar": "Habits", "campaign": "", "title": "Monday check-in: calm or chaos?", "hook": "Be honest: how did this morning start?", "concept": "Open the week with a zero-effort poll that tells us how mornings actually feel in late November, and introduce the week's theme of dark-morning habits.", "script": [{"frame": 1, "visual": "Dark kitchen window, steam rising from a mug, clock shows 07:00", "text": "Be honest: how did this morning start?", "sticker": "poll: Calm / Chaos"}, {"frame": 2, "visual": "Same shot, a warm lamp switches on", "text": "Dark mornings make everything harder. It's not just you."}, {"frame": 3, "visual": "Hand opening the curtains to streetlight", "text": "This week: tiny habits for dark mornings. First one drops at 12."}], "caption": "", "cta": "Vote in the poll", "hashtags": [], "creative_direction": "Film all three frames in one take at the kitchen window before sunrise. Warm lamp light only, no ceiling light. Text lowercase, centered in the upper third.", "checklist": [{"task": "Plan frames", "done": true}, {"task": "Capture or design frames (9:16)", "done": true}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": true}, {"task": "Publish", "done": true}, {"task": "Add to Highlight if evergreen", "done": true}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:25"}, {"id": "2026W48-mon-carousel1", "date": "2026-11-23", "day": "mon", "time": "12:00", "format": "carousel", "platforms": ["instagram"], "status": "published", "pillar": "Habits", "campaign": "", "title": "5 tiny habits for dark mornings", "hook": "5 tiny habits for **dark** November mornings", "concept": "A save-worthy list of five habits that each take under two minutes and make dark mornings easier. Positions the account as realistic rather than hustle.", "script": [{"slide": 1, "type": "cover", "kicker": "Dark mornings", "headline": "5 tiny habits for **dark** November mornings", "subhead": "Each one takes under 2 minutes"}, {"slide": 2, "type": "text", "headline": "1. Light **before** phone", "body": "Switch on a warm lamp before you touch your phone. Light tells your brain the day has started."}, {"slide": 3, "type": "text", "headline": "2. Water on the nightstand", "body": "Fill the glass the night before. Drink it before your feet touch the floor."}, {"slide": 4, "type": "text", "headline": "3. One song, not a playlist", "body": "Pick one song that means 'get up'. When it ends, you're up."}, {"slide": 5, "type": "text", "headline": "4. Open the curtains anyway", "body": "Even streetlight is light. It tells your body the night is over."}, {"slide": 6, "type": "text", "headline": "5. Decide breakfast **tonight**", "body": "One less decision at 7 a.m. is a calmer 7 a.m."}, {"slide": 7, "type": "list", "headline": "Your dark-morning starter kit", "items": ["Light before phone", "Water on the nightstand", "One song, then up", "Curtains open", "Breakfast decided"]}, {"slide": 8, "type": "cta", "headline": "Save this for **tomorrow** morning", "body": "Which one are you trying first? Comment 1-5.", "button": "Follow for calm habits"}], "caption": "Dark mornings aren't a discipline problem. They're a light problem.\n\nFive tiny habits, each under 2 minutes:\n1. Light before phone\n2. Water on the nightstand\n3. One song, not a playlist\n4. Open the curtains, even in the dark\n5. Decide breakfast the night before\n\nSave this for tomorrow morning. Which one are you trying first? Comment 1-5.", "cta": "Save it, then comment 1-5", "hashtags": ["#morningroutine", "#darkmornings", "#tinyhabits", "#slowliving"], "creative_direction": "Brand template: cover on deep green with terracotta emphasis, body slides on cream, recap slide as a numbered list. No photos needed. Keep every slide under 30 words.", "checklist": [{"task": "Outline approved", "done": true}, {"task": "Write slide copy", "done": true}, {"task": "Design slides with brand kit", "done": true}, {"task": "Proofread every slide", "done": true}, {"task": "Caption, hashtags and alt text", "done": true}, {"task": "Publish", "done": true}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:25"}, {"id": "2026W48-tue-story1", "date": "2026-11-24", "day": "tue", "time": "08:30", "format": "story", "platforms": ["instagram"], "status": "published", "pillar": "Behind the scenes", "campaign": "", "title": "Poll results + filming day", "hook": "62% of you said chaos. Same.", "concept": "Close the loop on Monday's poll, show the reel being filmed to build anticipation, and learn how long their routines are with a quiz.", "script": [{"frame": 1, "visual": "Screenshot of Monday's poll result", "text": "62% of you said chaos. Same."}, {"frame": 2, "visual": "Phone on tripod at the kitchen counter, ring light off, window light", "text": "Filming why routines keep failing (it's not laziness)", "sticker": "quiz: How long is your morning routine? Under 10 min / 10-30 / 30-60 / 60+"}, {"frame": 3, "visual": "Close-up of coffee being poured", "text": "Up at 18:00", "sticker": "countdown: New reel"}], "caption": "", "cta": "Answer the quiz and tap the countdown reminder", "hashtags": [], "creative_direction": "Real behind the scenes, no polish. Shoot frames 2-3 while setting up Tuesday's reel.", "checklist": [{"task": "Plan frames", "done": true}, {"task": "Capture or design frames (9:16)", "done": true}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": true}, {"task": "Publish", "done": true}, {"task": "Add to Highlight if evergreen", "done": true}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:26"}, {"id": "2026W48-tue-reel1", "date": "2026-11-24", "day": "tue", "time": "18:00", "format": "reel", "platforms": ["instagram", "tiktok", "youtube_shorts"], "status": "ready", "pillar": "Habits", "campaign": "", "title": "3 reasons your morning routine keeps failing", "hook": "Your morning routine isn't failing because you're lazy.", "concept": "Reframe failed routines as a design problem: copied from someone else, too long, and started too late (the night before). Edited from the raw talking-head footage of this week.", "script": [{"time": "0-2s", "visual": "Close-up, kitchen counter, morning light", "voiceover": "Your morning routine isn't failing because you're lazy.", "on_screen": "it's not laziness"}, {"time": "2-6s", "visual": "Punch-in", "voiceover": "Here are three reasons it keeps falling apart.", "on_screen": "3 reasons"}, {"time": "6-17s", "visual": "Wide, then B-roll of an alarm at 05:00", "voiceover": "One: you copied someone else's routine. Start with one thing that already fits your actual morning.", "on_screen": "1. it's not yours"}, {"time": "17-28s", "visual": "Punch-in", "voiceover": "Two: it's too long. Keep a ten-minute version for bad days.", "on_screen": "2. it's too long"}, {"time": "28-40s", "visual": "B-roll: phone face down on the nightstand", "voiceover": "Three: it starts the night before. Pick a phone-down time and protect it like a meeting.", "on_screen": "3. it starts the night before"}, {"time": "40-45s", "visual": "Back to close-up", "voiceover": "Make it yours, make it short, start the night before. Save this for tomorrow.", "on_screen": "save for tomorrow"}], "caption": "Your morning routine isn't failing because you're lazy.\n\nIt's failing because:\n1. You copied someone else's\n2. It's way too long\n3. It starts at your alarm, not the night before\n\nSave this for tomorrow morning, and tell me: which one is yours?", "cta": "Save this for tomorrow morning", "hashtags": ["#morningroutine", "#habits", "#selfimprovement", "#slowliving"], "creative_direction": "Talking head at the kitchen counter, phone at eye level, window light from the side. Cut with the AI Content Studio cut list: remove dead air, the retake of reason one and the 'um' before the hook. Alternate 100% / 112% punch-ins. Burned captions, lower-middle. Soft lo-fi music under the voice.", "checklist": [{"task": "Script and hook approved", "done": true}, {"task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)", "done": true}, {"task": "Capture 3-5 B-roll clips", "done": true}, {"task": "Edit: cuts, pacing, music", "done": true}, {"task": "Subtitles and on-screen text", "done": true}, {"task": "Choose cover frame", "done": true}, {"task": "Caption, hashtags and alt text", "done": true}, {"task": "Publish on Instagram", "done": true}, {"task": "Cross-post to TikTok with native caption", "done": true}, {"task": "Cross-post to YouTube Shorts with native caption", "done": true}], "thumbnail": "", "footage": ["media/raw-morning.mp4"], "platform_variants": {"tiktok": {"time": "19:00", "caption": "your morning routine isn't failing because you're lazy. here's what's actually going on #morningroutine #habits"}, "youtube_shorts": {"time": "17:00", "title": "Why your morning routine keeps failing (3 reasons)", "caption": "Make it yours, make it short, start the night before."}}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:26"}, {"id": "2026W48-wed-story1", "date": "2026-11-25", "day": "wed", "time": "08:30", "format": "story", "platforms": ["instagram"], "status": "ready", "pillar": "Mindset", "campaign": "", "title": "Which reason was yours?", "hook": "Which reason was yours?", "concept": "Recycle Tuesday's reel into Stories for the followers who missed it, and collect answers that feed Friday's Q&A.", "script": [{"frame": 1, "visual": "Reshare of Tuesday's reel", "text": "In case you missed it", "sticker": "link to reel"}, {"frame": 2, "visual": "Plain cream background", "text": "Which reason was yours?", "sticker": "poll: Copied / Too long / Night before"}, {"frame": 3, "visual": "Notebook with a short handwritten list", "text": "What does YOUR 10-minute version look like?", "sticker": "question box"}], "caption": "", "cta": "Vote and answer the question box", "hashtags": [], "creative_direction": "Brand cream background frames, handwritten-style text on frame 3.", "checklist": [{"task": "Plan frames", "done": true}, {"task": "Capture or design frames (9:16)", "done": true}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": true}, {"task": "Publish", "done": true}, {"task": "Add to Highlight if evergreen", "done": true}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:26"}, {"id": "2026W48-wed-carousel1", "date": "2026-11-25", "day": "wed", "time": "12:00", "format": "carousel", "platforms": ["instagram"], "status": "ready", "pillar": "Habits", "campaign": "", "title": "Why your morning routine keeps failing (carousel)", "hook": "Your routine isn't failing because you're **lazy**", "concept": "Tuesday's reel repurposed into an 8-slide carousel so the three reasons can be saved and shared. Spec: examples/sample-carousel.json.", "script": [{"slide": 1, "type": "cover", "headline": "Your routine isn't failing because you're **lazy**"}, {"slide": 2, "type": "text", "headline": "The 5 a.m. alarm. The cold plunge. The journal."}, {"slide": 3, "type": "text", "headline": "1. You copied someone else's routine"}, {"slide": 4, "type": "text", "headline": "2. You made it way too long"}, {"slide": 5, "type": "text", "headline": "3. It starts the night before"}, {"slide": 6, "type": "list", "headline": "The fix, on one slide"}, {"slide": 7, "type": "quote", "headline": "A routine you can do on your worst day beats a perfect one you skip."}, {"slide": 8, "type": "cta", "headline": "Save this for tomorrow morning"}], "caption": "Your morning routine isn't failing because you're lazy. It's failing because it was designed for someone else's life.\n\nThe three fixes:\n1. Make it yours\n2. Make it short\n3. Start the night before\n\nSave this for tomorrow morning. Which ONE habit would you keep?", "cta": "Save this, then comment the one habit you'd keep", "hashtags": ["#morningroutine", "#habits", "#productivitytips"], "creative_direction": "Rendered with carousel.py from examples/sample-carousel.json (PNG + editable PPTX). Cover on deep green; recap slide is the save magnet.", "checklist": [{"task": "Outline approved", "done": true}, {"task": "Write slide copy", "done": true}, {"task": "Design slides with brand kit", "done": true}, {"task": "Proofread every slide", "done": true}, {"task": "Caption, hashtags and alt text", "done": true}, {"task": "Publish", "done": true}], "thumbnail": "data:image/jpeg;base64,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asyiirjFRVkRUqSqPmkwoooqjMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopQMkAdTQAlFdSfhb44EZlPhTVjGF3bhDkYxnNct9aQ7BRWzofg7xF4milm0XRb7UIoW2SPbxlgrYzgn1qvrfhzWPDVxHbazp1zp88i70jnXazL0zj0phYzqKKKBBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFTQ2V3cLvhtbiVM43RxMwz9QKAIaKc8bxOUkRkdTgqwwQfcGun8DfDfXfiHJeJon2TNmEaX7RLs4bOMcHPQ0hpXOWore8Z+DNU8CauNJ1f7P9pMSzfuJN67SSBzgc8Vg0AFFFFMQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH05+zv8STr2lf8ACLalPnUdPTNs7nmaAdvcpwPpj0rivjL8H7238a2lx4dtC9rr8+xY0HywXB5YH0UjLfg1eTaHrV74c1e01bTpTFd2kgkjbtx1B9iMgj3r7Y8HeJ7Xxp4asNdtozGl0mTG3WNwSrL+BBGal6am0feVmZWn2mifBz4fYkcLaadEZJpOjXEx6n6s3A/D0r5F8V+Jr/xl4gu9a1Bi09y+Qg5Ea9FQewHFejftDfEOTxF4ibw1aMy6dpMhWXt51wOCfovQ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oooAKKKKACg9DjrRRQB6pp0trDpQkV9mmpAzKQkzxlQqEAqn7s5/eBt/zbj6YrmA2hTnSlhn02zsCy/afNh33SPubJbIOUxtHXGOxOa5PJAIycHkjsaSlYdz0Fr/AMLxXgjSWzFtcNYNdxLzGzJM/m/dVRjbtJwAOeKoRaroU1tD5ttptvMbZ3d4odrLMs48vB7fuxz6jrzXG0tFh3O7m1Hw9qmqz3sz6dDKLq9ZAIQFnjLIYtxZWGTmQ7iCeMelTz33hfyri0hn01tNS+upfKkRjJ5Lwx7fJOODvBx0PA7ZrzyiiwrndS6xpDWa2sR0ua3jv7eeSG4XaZU8iNW2vtJHzqwOO3qKzrxdHj8TwXcU2nXdkrRebbsBEhJU5XKLtIXAywABJHHWuWooC539svhJbi/Nzf2M8UoK7fISPy/3PBQqhz+84+TaOMng1Vg1Xw9GsKGz0lhH/Z67ngyWBTFyW9efyPI55riqKLDueh40DS4tMlf+zY4jDFNCyo32kyC7OJC2PueWpzz26ZrP1K88Ny6BcG3htpbyQzF5Hk2yiUzMVdRsJZdmOAwHJyM1xpZmADMTgYGT0HpSUWFcKKKKYgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigDrfDWo2v9hyafqN/DaWgeaUPDcyRXKsYwPuKNsqnAGD055FXbm68HHQ5JIYrUX/ANlW4VBGf9fIojaL0/d48wdua4WilYdz0K+Xw8LKW8K6b9juLjUBuaNjPKoC+T5RxxhiPTrzxWR4wuPD0lnCmiW9soEgMckcn7wR7eVddgOc85Ysc5xwa5UsxUKWJUdBngUlAXN7S5/CyR3Av7HU3kNq6oRcKR52PlIAQEDPqTxnrWCPeiimAUUUUCCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z", "footage": [], "platform_variants": {}, "notes": "Alt text: Eight-slide carousel on three reasons morning routines fail and how to fix each.", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:26", "repurposed_from": "2026W48-tue-reel1"}, {"id": "2026W48-thu-email1", "date": "2026-11-26", "day": "thu", "time": "08:00", "format": "email", "platforms": ["email"], "status": "drafted", "pillar": "Habits", "campaign": "10-minute morning guide", "title": "Newsletter: your 10-minute bad-day morning", "hook": "On day 3 of my 'perfect' routine, I overslept by 40 minutes and almost quit.", "concept": "Tell the story behind the 'too long' reason, introduce the non-negotiable 10-minute version, and launch the free guide to grow the list.", "script": ["Opening: the day-3 oversleep story (3-4 sentences, honest and a little funny)", "The insight: a routine has to survive your worst morning, not your best one", "The 10-minute version in 3 steps: light + water (2 min), one song of stretching (4 min), one line in a notebook (4 min)", "CTA button: Get the free 10-minute morning guide", "P.S. Reply and tell me your one non-negotiable. I read every reply."], "caption": "", "cta": "Download the free 10-minute morning guide", "hashtags": [], "creative_direction": "Plain-text style email with one photo of the notebook and mug. One button. Under 350 words.", "checklist": [{"task": "Subject line and preview text", "done": false}, {"task": "Draft body", "done": false}, {"task": "Add links and CTA button", "done": false}, {"task": "Send test email and check on mobile", "done": false}, {"task": "Schedule send", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 2, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:24", "subject": "Your 10-minute bad-day morning", "preview_text": "The routine for mornings when nothing goes to plan (free guide inside)"}, {"id": "2026W48-thu-story1", "date": "2026-11-26", "day": "thu", "time": "08:30", "format": "story", "platforms": ["instagram"], "status": "drafted", "pillar": "Habits", "campaign": "10-minute morning guide", "title": "Newsletter is out: free guide", "hook": "I wrote you a 10-minute morning.", "concept": "Drive newsletter sign-ups on launch day with a direct, friendly link sticker sequence.", "script": [{"frame": 1, "visual": "Notebook page titled 'my 10-minute morning'", "text": "I wrote you a 10-minute morning."}, {"frame": 2, "visual": "Phone showing the guide's first page", "text": "For the mornings when nothing goes to plan. It's free.", "sticker": "link: Get the guide"}, {"frame": 3, "visual": "Selfie with mug, relaxed", "text": "Tell me if you try it", "sticker": "emoji slider"}], "caption": "", "cta": "Tap the link sticker to get the guide", "hashtags": [], "creative_direction": "Warm, handheld, natural light. Link sticker in the middle of frame 2, away from the edges.", "checklist": [{"task": "Plan frames", "done": false}, {"task": "Capture or design frames (9:16)", "done": false}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": false}, {"task": "Publish", "done": false}, {"task": "Add to Highlight if evergreen", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 2, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:24"}, {"id": "2026W48-thu-reel1", "date": "2026-11-26", "day": "thu", "time": "18:00", "format": "reel", "platforms": ["instagram", "tiktok", "youtube_shorts"], "status": "drafted", "pillar": "Slow living", "campaign": "10-minute morning guide", "title": "My 10-minute bad-day morning, in real time", "hook": "This is my entire routine on a bad day. It takes 10 minutes.", "concept": "Show the non-negotiable routine in real time with a visible timer, proving it fits any morning. Soft-sells the free guide.", "script": [{"time": "0-2s", "visual": "Timer at 10:00 starts, lamp clicks on", "voiceover": "This is my entire routine on a bad day.", "on_screen": "10 minutes. that's it."}, {"time": "2-12s", "visual": "Water glass from the nightstand, curtains opening", "voiceover": "Light and water first. Two minutes.", "on_screen": "light + water"}, {"time": "12-30s", "visual": "Stretching to one song, timer in the corner", "voiceover": "One song of stretching. When it ends, I'm done.", "on_screen": "one song"}, {"time": "30-40s", "visual": "Writing one line in a notebook", "voiceover": "One line in my notebook. Not a page. A line.", "on_screen": "one line"}, {"time": "40-45s", "visual": "Timer hits 00:00, sip of coffee", "voiceover": "The full guide is free. Link in bio.", "on_screen": "free guide: link in bio"}], "caption": "My whole routine on a bad day. 10 minutes, start to finish.\n\nLight and water. One song of stretching. One line in a notebook.\n\nThat's the version that survives oversleeping, sick kids and dark Novembers. The full guide is free: link in bio.", "cta": "Get the free guide: link in bio", "hashtags": ["#morningroutine", "#slowmorning", "#10minutes", "#slowliving"], "creative_direction": "Voice-over on B-roll, no talking head. Overhead and side angles, real-time timer overlay top-left inside the safe zone. Calm acoustic track. Natural light, cream and green tones.", "checklist": [{"task": "Script and hook approved", "done": false}, {"task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)", "done": false}, {"task": "Capture 3-5 B-roll clips", "done": false}, {"task": "Edit: cuts, pacing, music", "done": false}, {"task": "Subtitles and on-screen text", "done": false}, {"task": "Choose cover frame", "done": false}, {"task": "Caption, hashtags and alt text", "done": false}, {"task": "Publish on Instagram", "done": false}, {"task": "Cross-post to TikTok with native caption", "done": false}, {"task": "Cross-post to YouTube Shorts with native caption", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {"tiktok": {"time": "19:00", "caption": "my entire morning routine on a bad day. 10 minutes. free guide in bio #morningroutine #slowliving"}, "youtube_shorts": {"time": "17:00", "title": "My 10-minute morning routine for bad days", "caption": "Light, water, one song, one line."}}, "notes": "", "revision": 2, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:27"}, {"id": "2026W48-fri-story1", "date": "2026-11-27", "day": "fri", "time": "08:30", "format": "story", "platforms": ["instagram"], "status": "drafted", "pillar": "Mindset", "campaign": "", "title": "Friday Q&A: your morning questions", "hook": "You asked, I answer (honestly).", "concept": "Answer three questions from Monday's and Wednesday's question boxes. Builds trust and feeds next week's ideas.", "script": [{"frame": 1, "visual": "Question sticker reply: 'what if I have kids?'", "text": "You asked, I answer (honestly).", "sticker": ""}, {"frame": 2, "visual": "Talking to camera, 15 s", "text": "Kids? Do the 10-minute version after drop-off. Mornings can start at 9."}, {"frame": 3, "visual": "Reply: 'I always snooze'", "text": "Put the alarm across the room, next to the water glass."}, {"frame": 4, "visual": "Reply: 'is 5 a.m. better?'", "text": "Only if you go to bed at 21. Sleep wins.", "sticker": "question box: Ask me anything for next Friday"}], "caption": "", "cta": "Send a question for next Friday", "hashtags": [], "creative_direction": "Use real questions from the boxes (ask permission before showing names). Talking-head frames filmed in one batch.", "checklist": [{"task": "Plan frames", "done": false}, {"task": "Capture or design frames (9:16)", "done": false}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": false}, {"task": "Publish", "done": false}, {"task": "Add to Highlight if evergreen", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:27"}, {"id": "2026W48-sat-story1", "date": "2026-11-28", "day": "sat", "time": "10:00", "format": "story", "platforms": ["instagram"], "status": "planned", "pillar": "Behind the scenes", "campaign": "", "title": "Weekend slow-morning behind the scenes", "hook": "", "concept": "", "script": "", "caption": "", "cta": "", "hashtags": [], "creative_direction": "", "checklist": [{"task": "Plan frames", "done": false}, {"task": "Capture or design frames (9:16)", "done": false}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": false}, {"task": "Publish", "done": false}, {"task": "Add to Highlight if evergreen", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 4, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:29"}, {"id": "2026W48-sat-reel1", "date": "2026-11-28", "day": "sat", "time": "11:00", "format": "reel", "platforms": ["instagram", "tiktok", "youtube_shorts"], "status": "drafted", "pillar": "Slow living", "campaign": "", "title": "3 things I stopped doing before 9 a.m.", "hook": "I stopped doing these 3 things before 9 a.m. My mornings got quieter.", "concept": "A 'stop list' from personal experience: checking email in bed, reading the news, and planning the entire day. Relatable and shareable, about subtraction rather than adding habits.", "script": [{"time": "0-2s", "visual": "Phone screen with 37 unread emails, then the phone is turned face down", "voiceover": "I stopped doing these three things before 9 a.m.", "on_screen": "3 things I quit before 9"}, {"time": "2-12s", "visual": "Bed, phone stays face down on the nightstand", "voiceover": "Checking email in bed. Nothing in there can't wait an hour.", "on_screen": "1. email in bed"}, {"time": "12-22s", "visual": "Radio or news app closed, kettle on", "voiceover": "Reading the news first thing. I read it at lunch now.", "on_screen": "2. the news"}, {"time": "22-34s", "visual": "A to-do list cut down to three lines", "voiceover": "Planning the entire day. I pick one thing that matters. The rest finds its place.", "on_screen": "3. planning everything"}, {"time": "34-38s", "visual": "Window, coffee, quiet", "voiceover": "Which one would you quit first?", "on_screen": "which one first?"}], "caption": "Three things I stopped doing before 9 a.m.:\n\n1. Checking email in bed\n2. Reading the news\n3. Planning the entire day\n\nMy mornings didn't get longer. They got quieter.\n\nWhich one would you quit first? Send this to the friend who checks email before brushing their teeth.", "cta": "Share it with a friend who needs it", "hashtags": ["#slowliving", "#morningroutine", "#digitalwellbeing", "#mindfulmornings"], "creative_direction": "Voice-over with slow, quiet B-roll in the bedroom and kitchen. Soft morning light, minimal props. Text pops on each number. Ends on a still shot to encourage a loop.", "checklist": [{"task": "Script and hook approved", "done": false}, {"task": "Film A-roll vertical (9:16, 1080x1920 or 4K, 30 fps)", "done": false}, {"task": "Capture 3-5 B-roll clips", "done": false}, {"task": "Edit: cuts, pacing, music", "done": false}, {"task": "Subtitles and on-screen text", "done": false}, {"task": "Choose cover frame", "done": false}, {"task": "Caption, hashtags and alt text", "done": false}, {"task": "Publish on Instagram", "done": false}, {"task": "Cross-post to TikTok with native caption", "done": false}, {"task": "Cross-post to YouTube Shorts with native caption", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {"tiktok": {"time": "19:00", "caption": "3 things i stopped doing before 9am and my mornings got so much quieter #slowliving #morningroutine"}, "youtube_shorts": {"time": "17:00", "title": "3 things I stopped doing before 9 a.m.", "caption": ""}}, "notes": "", "revision": 2, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:24"}, {"id": "2026W48-sun-story1", "date": "2026-11-29", "day": "sun", "time": "10:00", "format": "story", "platforms": ["instagram"], "status": "planned", "pillar": "Slow living", "campaign": "", "title": "Sunday reset: prep for Monday morning", "hook": "", "concept": "", "script": "", "caption": "", "cta": "", "hashtags": [], "creative_direction": "", "checklist": [{"task": "Plan frames", "done": false}, {"task": "Capture or design frames (9:16)", "done": false}, {"task": "Add interactive sticker (poll, quiz, question or link)", "done": false}, {"task": "Publish", "done": false}, {"task": "Add to Highlight if evergreen", "done": false}], "thumbnail": "", "footage": [], "platform_variants": {}, "notes": "", "revision": 2, "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:24"}], "created_at": "2026-11-21T21:00:24", "updated_at": "2026-11-21T21:00:29"};
+const BRAND = {"name": "Calm Habits", "handle": "@calmhabits.sample", "primary": "#2E3A33", "accent": "#C46A43", "language": "en"} || {};
+
+const LANG = String(BRAND.language || (PLAN && PLAN.language) || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
+const I18N = {
+  en: {
+    locale: "en-GB",
+    status: { planned: "Planned", drafted: "Drafted", ready: "Ready", published: "Published" },
+    format: { reel: "Reel", story: "Story", carousel: "Carousel", email: "Email" },
+    platform: { instagram: "Instagram", tiktok: "TikTok", youtube_shorts: "YouTube Shorts", email: "Email" },
+    platformShort: { instagram: "IG", tiktok: "TikTok", youtube_shorts: "Shorts", email: "Email" },
+    day: { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday", sat: "Saturday", sun: "Sunday" },
+    dayShort: { mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat", sun: "Sun" },
+    contentPlan: "Content plan",
+    items: n => n + (n === 1 ? " item" : " items"),
+    timesIn: tz => "Times in " + tz,
+    week: n => "Week " + n + " ",
+    theme: "Theme: ", goals: "Goals: ",
+    publishedOf: (total, ready) => "/ " + total + " published · " + ready + " ready",
+    showOnly: s => "Show only " + s.toLowerCase(),
+    all: "All", themeBtn: "◐ Theme", themeTitle: "Switch light / dark", print: "Print", save: "Save changes",
+    changeStatus: (id, s) => id + " status → " + s,
+    changeCheck: (id, task, done) => id + " checklist \"" + task + "\" → " + (done ? "done" : "not done"),
+    notice: n => (n === 1 ? "1 change is" : n + " changes are") + " saved in this browser only. Send " + (n === 1 ? "it" : "them") + " to Kimi to keep " + (n === 1 ? "it" : "them") + " in the plan.",
+    discard: "Discard", discarded: "Local changes discarded",
+    ideaTbw: "Idea to be written", untitled: "Untitled", untitledFormat: f => "Untitled " + f.toLowerCase(),
+    at: " at ", nextStatus: "Click to move to the next status",
+    filtered: "Filtered out", rest: "Rest day",
+    copy: "Copy", copied: l => l + " copied", copyBlocked: "Copy blocked here: select the text manually",
+    pillar: "Pillar: ", campaign: "Campaign: ",
+    subject: "Subject line", preview: "Preview text", hook: "Hook", concept: "Concept",
+    slides: "Slides", frames: "Story frames", outline: "Email outline", script: "Script",
+    caption: "Caption", cta: "Call to action", hashtags: "Hashtags", direction: "Creative direction",
+    crosspost: "Cross-posting", checklist: "Production checklist", footage: "Footage", notes: "Notes",
+    itemId: "Item id", revision: (id, rev) => id + " · revision " + rev,
+    regen: "Copy “regenerate” request", copyCaption: "Copy caption", close: "Close",
+    regenPrompt: (it, fmt, day, week) => "Using AI Content Studio, regenerate item " + it.id + " (" + fmt + " on " + day + " at " + it.time + ") in my week " + week + " plan. Keep its date, time and format and leave every other item unchanged. What to change: ",
+    applyIntro: week => "Using AI Content Studio, apply these changes to my week " + week + " plan:",
+    noChanges: "No changes yet.", saveTitle: "Save changes to the plan",
+    saveSub: "This page can't write to your plan file. Paste the short version into the Kimi chat, or download the full plan and attach it.",
+    shortVersion: "Short version: paste into Kimi", fullJson: "Full plan JSON", download: "Download JSON", done: "Done",
+    downloadStarted: "Download started (if blocked, use Copy)", downloadBlocked: "Download blocked here: use Copy instead",
+    noData: "No plan data was embedded in this page.",
+    footer: (week, updated) => "Generated by AI Content Studio from " + week + " (plan updated " + updated + "). Status and checklist clicks are saved in this browser only, until you send them to Kimi with “Save changes”.",
+    labels: { subject: "Subject", preview: "Preview text", hook: "Hook", script: "Script", caption: "Caption", cta: "CTA", hashtags: "Hashtags", regen: "Regenerate request", changes: "Changes", plan: "Plan JSON", text: "Text" }
+  },
+  zh: {
+    locale: "zh-CN",
+    status: { planned: "已计划", drafted: "已起草", ready: "待发布", published: "已发布" },
+    format: { reel: "Reel", story: "快拍", carousel: "轮播图", email: "邮件" },
+    platform: { instagram: "Instagram", tiktok: "TikTok", youtube_shorts: "YouTube Shorts", email: "邮件" },
+    platformShort: { instagram: "IG", tiktok: "TikTok", youtube_shorts: "Shorts", email: "邮件" },
+    day: { mon: "周一", tue: "周二", wed: "周三", thu: "周四", fri: "周五", sat: "周六", sun: "周日" },
+    dayShort: { mon: "周一", tue: "周二", wed: "周三", thu: "周四", fri: "周五", sat: "周六", sun: "周日" },
+    contentPlan: "内容计划",
+    items: n => n + " 条内容",
+    timesIn: tz => "时间：" + tz,
+    week: n => "第 " + n + " 周 ",
+    theme: "主题：", goals: "目标：",
+    publishedOf: (total, ready) => "/ " + total + " 已发布 · " + ready + " 待发布",
+    showOnly: s => "只看" + s,
+    all: "全部", themeBtn: "◐ 深浅色", themeTitle: "切换浅色/深色", print: "打印", save: "保存更改",
+    changeStatus: (id, s) => id + " 状态 → " + s,
+    changeCheck: (id, task, done) => id + " 清单「" + task + "」→ " + (done ? "已完成" : "未完成"),
+    notice: n => n + " 处更改只保存在这个浏览器里。发给 Kimi 后才会写进计划。",
+    discard: "放弃", discarded: "已放弃本地更改",
+    ideaTbw: "待写的选题", untitled: "未命名", untitledFormat: f => "未命名的" + f,
+    at: " · ", nextStatus: "点击切换到下一个状态",
+    filtered: "已被筛选隐藏", rest: "休息日",
+    copy: "复制", copied: l => "已复制" + l, copyBlocked: "这里无法复制：请手动选中文字",
+    pillar: "内容支柱：", campaign: "活动：",
+    subject: "邮件标题", preview: "预览文字", hook: "开头钩子", concept: "创意概念",
+    slides: "轮播页", frames: "快拍画面", outline: "邮件大纲", script: "脚本",
+    caption: "文案", cta: "行动号召", hashtags: "话题标签", direction: "创意方向",
+    crosspost: "多平台同步", checklist: "制作清单", footage: "素材", notes: "备注",
+    itemId: "内容编号", revision: (id, rev) => id + " · 第 " + rev + " 版",
+    regen: "复制「重新生成」指令", copyCaption: "复制文案", close: "关闭",
+    regenPrompt: (it, fmt, day, week) => "请用 AI Content Studio 重新生成我 " + week + " 计划里的 " + it.id + "（" + fmt + "，" + day + " " + it.time + "）。保持日期、时间和形式不变，其他内容都不要动。需要修改的是：",
+    applyIntro: week => "请用 AI Content Studio 把这些更改应用到我 " + week + " 的计划：",
+    noChanges: "还没有更改。", saveTitle: "把更改保存到计划",
+    saveSub: "这个页面无法直接修改计划文件。把下面的简短版本粘贴到 Kimi 对话里，或者下载完整计划 JSON 后作为附件发送。",
+    shortVersion: "简短版本：粘贴到 Kimi", fullJson: "完整计划 JSON", download: "下载 JSON", done: "完成",
+    downloadStarted: "已开始下载（如被拦截，请用复制）", downloadBlocked: "这里无法下载：请改用复制",
+    noData: "此页面没有嵌入计划数据。",
+    footer: (week, updated) => "由 AI Content Studio 根据 " + week + " 生成（计划更新于 " + updated + "）。状态和清单的点击只保存在这个浏览器里，点「保存更改」发给 Kimi 后才会写进计划。",
+    labels: { subject: "邮件标题", preview: "预览文字", hook: "钩子", script: "脚本", caption: "文案", cta: "行动号召", hashtags: "话题标签", regen: "重新生成指令", changes: "更改", plan: "计划 JSON", text: "文字" }
+  }
+};
+const T = I18N[LANG];
+const STATUSES = ["planned", "drafted", "ready", "published"];
+const STATUS_LABEL = T.status;
+const FORMATS = ["reel", "story", "carousel", "email"];
+const FORMAT_LABEL = T.format;
+const PLATFORM_SHORT = T.platformShort;
+const PLATFORM_LABEL = T.platform;
+const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const DAY_LABEL = T.day;
+document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
+const ICONS = {
+  reel: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z" fill="#fff"/></svg>',
+  story: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-dasharray="4 2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="0"/></svg>',
+  carousel: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="6" y="4" width="12" height="16" rx="2.5"/><path d="M3 7v10M21 7v10"/></svg>',
+  email: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>'
+};
+
+const store = {
+  get(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } },
+  set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ } },
+  del(key) { try { localStorage.removeItem(key); } catch (e) { /* storage unavailable */ } }
+};
+const KEY = "acs-calendar:" + (PLAN && PLAN.week) + ":" + (PLAN && PLAN.updated_at || "");
+let overlay = store.get(KEY) || { status: {}, checks: {} };
+const filter = { format: "all", status: "all" };
+
+if (BRAND.accent && /^#[0-9a-f]{6}$/i.test(BRAND.accent)) {
+  document.documentElement.style.setProperty("--accent", BRAND.accent);
+}
+
+function el(tag, attrs, children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs || {})) {
+    if (value === undefined || value === null || value === false) continue;
+    if (key === "class") node.className = value;
+    else if (key === "text") node.textContent = value;
+    else if (key === "html") node.innerHTML = value;
+    else if (key.startsWith("on")) node.addEventListener(key.slice(2), value);
+    else node.setAttribute(key, value === true ? "" : value);
+  }
+  for (const child of [].concat(children || [])) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+  }
+  return node;
+}
+function parseDate(iso) { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); }
+function fmtDate(iso, opts) { return parseDate(iso).toLocaleDateString(T.locale, opts); }
+function statusOf(item) { return overlay.status[item.id] || item.status || "planned"; }
+function checksOf(item) {
+  const local = overlay.checks[item.id] || {};
+  return (item.checklist || []).map((c, i) => (i in local ? local[i] : !!c.done));
+}
+function persist() { store.set(KEY, overlay); renderNotice(); }
+function toast(message) {
+  const t = document.getElementById("toast");
+  t.textContent = message; t.classList.add("show");
+  clearTimeout(toast.timer); toast.timer = setTimeout(() => t.classList.remove("show"), 1800);
+}
+async function copyText(text, label) {
+  try { await navigator.clipboard.writeText(text); toast(T.copied(label || T.labels.text)); }
+  catch (e) {
+    const area = el("textarea", { class: "out" }); area.value = text;
+    document.body.append(area); area.select();
+    let ok = false; try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    area.remove(); toast(ok ? T.copied(label || T.labels.text) : T.copyBlocked);
+  }
+}
+function plain(text) { return String(text == null ? "" : text).replace(/\*\*(.+?)\*\*/g, "$1"); }
+function asText(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "string") return plain(value);
+  if (Array.isArray(value)) return value.map((v, i) => (i + 1) + ". " + (typeof v === "object" ? Object.entries(v).filter(([, x]) => x !== "" && x != null).map(([k, x]) => k + ": " + x).join(" | ") : v)).join("\n");
+  if (typeof value === "object") return Object.entries(value).map(([k, v]) => k + ": " + asText(v)).join("\n");
+  return String(value);
+}
+function isFilled(v) { return v !== null && v !== undefined && (typeof v !== "string" || v.trim() !== "") && (!Array.isArray(v) || v.length) && (typeof v !== "object" || Array.isArray(v) || Object.keys(v).length); }
+
+/* ---------------- header + toolbar ---------------- */
+function renderHeader() {
+  const items = PLAN.items;
+  const weekNo = (PLAN.week || "").split("W")[1] || "";
+  const brandBits = [BRAND.name || PLAN.brand, BRAND.handle || PLAN.handle].filter(Boolean);
+  const eyebrow = document.getElementById("eyebrow");
+  eyebrow.replaceChildren(
+    brandBits.length ? el("b", { text: brandBits.join(" · ") }) : el("b", { text: T.contentPlan }),
+    el("span", { text: T.items(items.length) }),
+    PLAN.timezone ? el("span", { text: T.timesIn(PLAN.timezone) }) : null
+  );
+  document.getElementById("title").replaceChildren(
+    T.week(Number(weekNo)),
+    el("span", { class: "range", text: fmtDate(PLAN.start_date, { day: "numeric", month: "short" }) + " – " + fmtDate(PLAN.end_date, { day: "numeric", month: "short", year: "numeric" }) })
+  );
+  const themeBits = [];
+  if (PLAN.theme) themeBits.push(el("span", {}, [el("b", { text: T.theme }), PLAN.theme]));
+  if (PLAN.goals && PLAN.goals.length) themeBits.push(el("span", {}, [themeBits.length ? " · " : "", el("b", { text: T.goals }), PLAN.goals.join("; ")]));
+  document.getElementById("themeLine").replaceChildren(...themeBits);
+}
+
+function renderProgress() {
+  const items = PLAN.items;
+  const counts = Object.fromEntries(STATUSES.map(s => [s, items.filter(it => statusOf(it) === s).length]));
+  document.getElementById("doneCount").textContent = counts.published;
+  document.getElementById("totalCount").textContent = T.publishedOf(items.length, counts.ready);
+  const bar = document.getElementById("bar");
+  bar.replaceChildren(...["published", "ready", "drafted", "planned"].map(s =>
+    el("i", { class: "st-" + s, style: "width:" + (items.length ? (100 * counts[s] / items.length) : 0) + "%;background:var(--st)", title: STATUS_LABEL[s] + ": " + counts[s] })));
+  const legend = document.getElementById("legend");
+  legend.replaceChildren(...STATUSES.map(s => el("button", {
+    class: "st-" + s, "aria-pressed": String(filter.status === s), title: T.showOnly(STATUS_LABEL[s]),
+    onclick: () => { filter.status = filter.status === s ? "all" : s; renderAll(); }
+  }, [el("span", { class: "dot", style: "background:var(--st)" }), STATUS_LABEL[s] + " " + counts[s]])));
+}
+
+function renderToolbar() {
+  const bar = document.getElementById("toolbar");
+  const present = FORMATS.filter(f => PLAN.items.some(it => it.format === f));
+  const chips = [el("button", { class: "chip", "aria-pressed": String(filter.format === "all"), onclick: () => { filter.format = "all"; renderAll(); } }, T.all)]
+    .concat(present.map(f => el("button", {
+      class: "chip fmt-" + f, "aria-pressed": String(filter.format === f),
+      onclick: () => { filter.format = filter.format === f ? "all" : f; renderAll(); }
+    }, [el("span", { class: "dot", style: "background:var(--fmt)" }), FORMAT_LABEL[f] + " " + PLAN.items.filter(it => it.format === f).length])));
+  bar.replaceChildren(...chips, el("span", { class: "spacer" }),
+    el("button", { class: "btn", onclick: toggleTheme, title: T.themeTitle }, T.themeBtn),
+    el("button", { class: "btn", onclick: () => window.print() }, T.print),
+    el("button", { class: "btn primary", onclick: openExport }, T.save));
+}
+
+function changes() {
+  const list = [];
+  for (const it of PLAN.items) {
+    if (overlay.status[it.id] && overlay.status[it.id] !== it.status) list.push({ id: it.id, kind: "status", text: T.changeStatus(it.id, LANG === "zh" ? STATUS_LABEL[overlay.status[it.id]] + " (" + overlay.status[it.id] + ")" : overlay.status[it.id]) });
+    const local = overlay.checks[it.id] || {};
+    for (const [i, value] of Object.entries(local)) {
+      const task = (it.checklist || [])[i];
+      if (task && !!task.done !== value) list.push({ id: it.id, kind: "check", text: T.changeCheck(it.id, task.task, value) });
+    }
+  }
+  return list;
+}
+
+function renderNotice() {
+  const n = changes().length;
+  const box = document.getElementById("notice");
+  box.classList.toggle("show", n > 0);
+  if (!n) { box.replaceChildren(); return; }
+  box.replaceChildren(
+    el("span", { text: T.notice(n) }),
+    el("button", { class: "btn primary", onclick: openExport }, T.save),
+    el("button", { class: "btn", onclick: () => { overlay = { status: {}, checks: {} }; store.del(KEY); renderAll(); toast(T.discarded); } }, T.discard));
+}
+
+/* ---------------- week grid ---------------- */
+function visible(item) {
+  return (filter.format === "all" || item.format === filter.format) && (filter.status === "all" || statusOf(item) === filter.status);
+}
+
+function card(item) {
+  const status = statusOf(item);
+  const checks = checksOf(item);
+  const thumb = el("div", { class: "thumb" });
+  if (item.thumbnail) thumb.append(el("img", { src: item.thumbnail, alt: "", loading: "lazy" }));
+  else thumb.append(el("div", { class: "ph" }, [el("span", { html: ICONS[item.format] || "" }), el("p", { text: plain(item.hook || item.subject || item.title || T.ideaTbw) })]));
+  thumb.append(el("span", { class: "badge", text: FORMAT_LABEL[item.format] || item.format }), el("span", { class: "time", text: item.time }));
+  const plats = (item.platforms || []).map(p => PLATFORM_SHORT[p] || p).join(" · ");
+  return el("article", {
+    class: "card fmt-" + item.format + (status === "published" ? " is-published" : ""), tabindex: "0",
+    "aria-label": FORMAT_LABEL[item.format] + T.at + item.time + ": " + (plain(item.title) || T.untitled),
+    onclick: () => openDetail(item.id),
+    onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(item.id); } }
+  }, [
+    thumb,
+    el("div", { class: "card-body" }, [
+      el("h3", { class: "card-title", text: plain(item.title) || T.untitledFormat(FORMAT_LABEL[item.format] || "") }),
+      el("div", { class: "card-meta" }, [el("span", { text: plats }), checks.length ? el("span", { text: "✓ " + checks.filter(Boolean).length + "/" + checks.length }) : null]),
+      el("button", {
+        class: "status st-" + status, title: T.nextStatus,
+        onclick: (e) => { e.stopPropagation(); cycleStatus(item); }
+      }, STATUS_LABEL[status])
+    ])
+  ]);
+}
+
+function renderWeek() {
+  const week = document.getElementById("week");
+  const todayIso = new Date().toISOString().slice(0, 10);
+  week.replaceChildren(...DAYS.map((day, index) => {
+    const date = new Date(parseDate(PLAN.start_date).getTime() + index * 86400000);
+    const iso = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+    const all = PLAN.items.filter(it => it.day === day).sort((a, b) => (a.time || "").localeCompare(b.time || ""));
+    const shown = all.filter(visible);
+    return el("section", { class: "day" + (iso === todayIso ? " today" : ""), "aria-label": DAY_LABEL[day] }, [
+      el("div", { class: "day-head" }, [
+        el("div", {}, [el("span", { class: "day-name", text: T.dayShort[day] + " " }), el("span", { class: "day-date", text: fmtDate(iso, { day: "numeric", month: "short" }) })]),
+        el("span", { class: "day-count", text: all.length ? T.items(all.length) : "" })
+      ]),
+      shown.length ? el("div", { class: "day-cards", style: "display:flex;flex-direction:column;gap:10px" }, shown.map(card))
+        : el("div", { class: "empty", text: all.length ? T.filtered : T.rest })
+    ]);
+  }));
+  if (window.matchMedia("(max-width: 760px)").matches) {
+    week.querySelectorAll(".day-cards").forEach(n => n.removeAttribute("style"));
+  }
+}
+
+function cycleStatus(item) {
+  const next = STATUSES[(STATUSES.indexOf(statusOf(item)) + 1) % STATUSES.length];
+  setStatus(item, next);
+  toast((plain(item.title) || item.id) + " → " + STATUS_LABEL[next]);
+}
+function setStatus(item, status) {
+  if (status === item.status) delete overlay.status[item.id]; else overlay.status[item.id] = status;
+  persist(); renderAll();
+}
+
+/* ---------------- detail dialog ---------------- */
+function fieldBlock(label, value, copyLabel) {
+  if (!isFilled(value)) return null;
+  let content;
+  if (Array.isArray(value)) {
+    content = el("ol", {}, value.map(entry => {
+      if (entry && typeof entry === "object") {
+        return el("li", {}, el("dl", { class: "kv" }, Object.entries(entry).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })])));
+      }
+      return el("li", { text: plain(entry) });
+    }));
+  } else if (value && typeof value === "object") {
+    content = el("dl", { class: "kv" }, Object.entries(value).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })]));
+  } else {
+    content = el("div", { class: "txt", text: plain(value) });
+  }
+  return el("section", { class: "field" }, [
+    el("h4", {}, [label, copyLabel ? el("button", { class: "copy", onclick: () => copyText(asText(value), copyLabel) }, T.copy) : null]),
+    content
+  ]);
+}
+
+function regeneratePrompt(item) {
+  return T.regenPrompt(item, FORMAT_LABEL[item.format], DAY_LABEL[item.day], PLAN.week);
+}
+
+function openDetail(id) {
+  const item = PLAN.items.find(it => it.id === id);
+  if (!item) return;
+  const dlg = document.getElementById("detail");
+  const status = statusOf(item);
+  const checks = checksOf(item);
+  const variants = Object.entries(item.platform_variants || {}).filter(([, v]) => v && Object.values(v).some(isFilled));
+  dlg.replaceChildren(
+    el("div", { class: "dlg-head fmt-" + item.format }, [
+      el("div", { class: "dlg-sub" }, [
+        el("span", { class: "pill", text: FORMAT_LABEL[item.format] }),
+        el("span", { text: DAY_LABEL[item.day] + " " + fmtDate(item.date, { day: "numeric", month: "short" }) + " · " + item.time }),
+        el("span", { text: (item.platforms || []).map(p => PLATFORM_LABEL[p] || p).join(", ") }),
+        item.pillar ? el("span", { text: T.pillar + item.pillar }) : null,
+        item.campaign ? el("span", { text: T.campaign + item.campaign }) : null
+      ]),
+      el("h2", { id: "dlgTitle", text: plain(item.title) || T.untitled }),
+      el("div", { class: "seg", role: "group", "aria-label": "Status" }, STATUSES.map(s => el("button", {
+        class: "st-" + s, "aria-pressed": String(status === s), onclick: () => { setStatus(item, s); openDetail(id); }
+      }, STATUS_LABEL[s])))
+    ]),
+    el("div", { class: "dlg-body" }, [
+      item.format === "email" ? fieldBlock(T.subject, item.subject, T.labels.subject) : null,
+      item.format === "email" ? fieldBlock(T.preview, item.preview_text, T.labels.preview) : null,
+      fieldBlock(T.hook, item.hook, T.labels.hook),
+      fieldBlock(T.concept, item.concept),
+      fieldBlock(item.format === "carousel" ? T.slides : item.format === "story" ? T.frames : item.format === "email" ? T.outline : T.script, item.script, T.labels.script),
+      fieldBlock(T.caption, item.caption, T.labels.caption),
+      fieldBlock(T.cta, item.cta, T.labels.cta),
+      isFilled(item.hashtags) ? fieldBlock(T.hashtags, (item.hashtags || []).join(" "), T.labels.hashtags) : null,
+      fieldBlock(T.direction, item.creative_direction),
+      variants.length ? el("section", { class: "field" }, [el("h4", { text: T.crosspost }), el("dl", { class: "kv" }, variants.flatMap(([p, v]) => [el("dt", { text: PLATFORM_LABEL[p] || p }), el("dd", { text: asText(v) })]))]) : null,
+      checks.length ? el("section", { class: "field" }, [
+        el("h4", { text: T.checklist + " · " + checks.filter(Boolean).length + "/" + checks.length }),
+        el("div", { class: "checks" }, (item.checklist || []).map((task, i) => {
+          const box = el("input", { type: "checkbox", checked: checks[i] ? true : null, onchange: (e) => {
+            overlay.checks[item.id] = overlay.checks[item.id] || {};
+            if (!!task.done === e.target.checked) delete overlay.checks[item.id][i]; else overlay.checks[item.id][i] = e.target.checked;
+            persist(); renderProgress(); renderWeek(); openDetail(id);
+          } });
+          return el("label", { class: checks[i] ? "done" : "" }, [box, el("span", { text: task.task })]);
+        }))
+      ]) : null,
+      isFilled(item.footage) ? fieldBlock(T.footage, item.footage) : null,
+      fieldBlock(T.notes, item.notes),
+      el("section", { class: "field" }, [el("h4", { text: T.itemId }), el("div", { class: "txt", text: T.revision(item.id, item.revision || 1) })])
+    ]),
+    el("div", { class: "dlg-foot" }, [
+      el("button", { class: "btn", onclick: () => copyText(regeneratePrompt(item), T.labels.regen) }, T.regen),
+      item.caption ? el("button", { class: "btn", onclick: () => copyText(item.caption + (isFilled(item.hashtags) ? "\n\n" + item.hashtags.join(" ") : ""), T.labels.caption) }, T.copyCaption) : null,
+      el("button", { class: "btn primary", onclick: () => dlg.close() }, T.close)
+    ])
+  );
+  if (!dlg.open) dlg.showModal();
+}
+
+/* ---------------- export ---------------- */
+function mergedPlan() {
+  const copy = JSON.parse(JSON.stringify(PLAN));
+  for (const it of copy.items) {
+    it.status = statusOf(it);
+    const local = overlay.checks[it.id] || {};
+    (it.checklist || []).forEach((task, i) => { if (i in local) task.done = local[i]; });
+  }
+  return copy;
+}
+function openExport() {
+  const dlg = document.getElementById("exportDlg");
+  const list = changes();
+  const instruction = list.length
+    ? T.applyIntro(PLAN.week) + "\n" + list.map(c => "- " + c.text).join("\n")
+    : "";
+  const json = JSON.stringify(mergedPlan(), null, 2);
+  const summary = el("textarea", { class: "out", readonly: true }); summary.value = instruction || T.noChanges;
+  const full = el("textarea", { class: "out", readonly: true }); full.value = json;
+  dlg.replaceChildren(
+    el("div", { class: "dlg-head" }, [el("h2", { id: "expTitle", text: T.saveTitle }),
+      el("div", { class: "dlg-sub", text: T.saveSub })]),
+    el("div", { class: "dlg-body" }, [
+      el("section", { class: "field" }, [el("h4", {}, [T.shortVersion, list.length ? el("button", { class: "copy", onclick: () => copyText(instruction, T.labels.changes) }, T.copy) : null]), summary]),
+      el("section", { class: "field" }, [el("h4", {}, [T.fullJson, el("button", { class: "copy", onclick: () => copyText(json, T.labels.plan) }, T.copy)]), full])
+    ]),
+    el("div", { class: "dlg-foot" }, [
+      el("button", { class: "btn", onclick: () => downloadPlan(json) }, T.download),
+      el("button", { class: "btn primary", onclick: () => dlg.close() }, T.done)
+    ])
+  );
+  dlg.showModal();
+}
+function downloadPlan(json) {
+  try {
+    const blob = new Blob([json], { type: "application/json" });
+    const link = el("a", { href: URL.createObjectURL(blob), download: "week-plan-" + PLAN.week + ".json" });
+    document.body.append(link); link.click(); link.remove();
+    toast(T.downloadStarted);
+  } catch (e) { toast(T.downloadBlocked); }
+}
+
+/* ---------------- theme + boot ---------------- */
+function toggleTheme() {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  store.set("acs-theme", root.dataset.theme);
+}
+function renderAll() { renderHeader(); renderProgress(); renderToolbar(); renderNotice(); renderWeek(); }
+
+(function boot() {
+  const theme = store.get("acs-theme");
+  if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+  if (!PLAN || !Array.isArray(PLAN.items)) {
+    document.getElementById("week").replaceChildren(el("div", { class: "empty", text: T.noData }));
+    return;
+  }
+  document.getElementById("foot").textContent =
+    T.footer(PLAN.week, (PLAN.updated_at || "?").replace("T", " "));
+  renderAll();
+  window.matchMedia("(max-width: 760px)").addEventListener("change", renderWeek);
+})();
+</script>
+</body>
+</html>

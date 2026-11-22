@@ -1,0 +1,917 @@
+{
+  "schema": "ai-content-studio/week-plan@1",
+  "week": "2026-W49",
+  "start_date": "2026-11-30",
+  "end_date": "2026-12-06",
+  "timezone": "Asia/Shanghai",
+  "language": "zh-CN",
+  "brand": "晨光慢习惯",
+  "handle": "@morninglight.sample",
+  "theme": "冬天的早晨也能慢下来",
+  "goals": [
+    "提高收藏和转发",
+    "免费《十分钟晨间指南》新增 200 个订阅"
+  ],
+  "campaigns": [],
+  "frequency": {
+    "mix": {
+      "reel": 2,
+      "story": 3,
+      "carousel": 1,
+      "email": 1
+    },
+    "total": 7
+  },
+  "items": [
+    {
+      "id": "2026W49-mon-story1",
+      "date": "2026-11-30",
+      "day": "mon",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "published",
+      "pillar": "习惯方法",
+      "campaign": "",
+      "title": "周一投票：今天早上是从容还是混乱？",
+      "hook": "说实话：今天早上是怎么开始的？",
+      "concept": "用一个零门槛的投票开启这一周，了解粉丝在冬天早晨的真实状态，并引出本周主题。",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "天还没亮的厨房窗边，马克杯冒着热气",
+          "text": "说实话：今天早上是怎么开始的？",
+          "sticker": "poll: 从容 / 混乱"
+        },
+        {
+          "frame": 2,
+          "visual": "同一个画面，台灯亮起",
+          "text": "冬天天亮得晚，早上更难。不只是你。"
+        },
+        {
+          "frame": 3,
+          "visual": "拉开窗帘，外面是路灯",
+          "text": "这周聊冬天早晨的小习惯。中午 12 点第一条上线。"
+        }
+      ],
+      "caption": "",
+      "cta": "参与投票",
+      "hashtags": [],
+      "creative_direction": "日出前在厨房窗边一次拍完三帧。只开暖色台灯，不开顶灯。文字放在上方三分之一处居中。",
+      "checklist": [
+        {
+          "task": "规划每一帧",
+          "done": true
+        },
+        {
+          "task": "拍摄或设计画面（9:16）",
+          "done": true
+        },
+        {
+          "task": "添加互动贴纸（投票、测验、提问或链接）",
+          "done": true
+        },
+        {
+          "task": "发布",
+          "done": true
+        },
+        {
+          "task": "长期有用的内容加入精选快拍",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:01",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:30:01",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "规划每一帧",
+                "done": false
+              },
+              {
+                "task": "拍摄或设计画面（9:16）",
+                "done": false
+              },
+              {
+                "task": "添加互动贴纸（投票、测验、提问或链接）",
+                "done": false
+              },
+              {
+                "task": "发布",
+                "done": false
+              },
+              {
+                "task": "长期有用的内容加入精选快拍",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:30:01",
+          "note": "status -> published",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W49-mon-carousel1",
+      "date": "2026-11-30",
+      "day": "mon",
+      "time": "12:00",
+      "format": "carousel",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "ready",
+      "pillar": "习惯方法",
+      "campaign": "",
+      "title": "冬天早晨的五个小习惯",
+      "hook": "冬天早晨的**五个**小习惯",
+      "concept": "一组值得收藏的清单：五个每个不超过两分钟的小习惯，让天黑的早晨轻松一点。定位是现实，而不是鸡血。",
+      "script": [
+        {
+          "slide": 1,
+          "type": "cover",
+          "headline": "冬天早晨的**五个**小习惯",
+          "subhead": "每个不超过两分钟"
+        },
+        {
+          "slide": 2,
+          "type": "text",
+          "headline": "1. 先开灯，再看手机",
+          "body": "先打开一盏暖色的灯。光会告诉大脑：一天开始了。"
+        },
+        {
+          "slide": 3,
+          "type": "text",
+          "headline": "2. 床头放一杯水",
+          "body": "前一晚倒好，脚落地之前先喝完。"
+        },
+        {
+          "slide": 4,
+          "type": "text",
+          "headline": "3. 一首歌，不是一个歌单",
+          "body": "选一首代表「起床」的歌，歌停你就起来。"
+        },
+        {
+          "slide": 5,
+          "type": "text",
+          "headline": "4. 天黑也要拉开窗帘",
+          "body": "路灯也是光，它会告诉身体夜晚结束了。"
+        },
+        {
+          "slide": 6,
+          "type": "text",
+          "headline": "5. 早餐**前一晚**决定好",
+          "body": "早上七点少做一个决定，就多一分从容。"
+        },
+        {
+          "slide": 7,
+          "type": "list",
+          "headline": "冬天早晨入门包",
+          "items": [
+            "先开灯",
+            "床头一杯水",
+            "一首歌就起床",
+            "拉开窗帘",
+            "早餐已决定"
+          ]
+        },
+        {
+          "slide": 8,
+          "type": "cta",
+          "headline": "收藏起来，**明天早上**用",
+          "body": "你先试哪一个？评论区告诉我 1-5。"
+        }
+      ],
+      "caption": "冬天的早晨难，不是因为你不自律，而是因为天太黑。\n\n五个小习惯，每个不超过两分钟：\n1. 先开灯，再看手机\n2. 床头放一杯水\n3. 一首歌就起床\n4. 天黑也拉开窗帘\n5. 早餐前一晚决定好\n\n收藏起来明天早上用。你先试哪一个？评论区告诉我 1-5。",
+      "cta": "收藏，然后评论 1-5",
+      "hashtags": [
+        "#晨间习惯",
+        "#冬天",
+        "#慢生活",
+        "#morningroutine"
+      ],
+      "creative_direction": "品牌模板：封面藏青底、赤陶橙强调；内页米白底；第 7 页做成编号清单。不需要照片，每页不超过 40 个字。",
+      "checklist": [
+        {
+          "task": "大纲已确认",
+          "done": true
+        },
+        {
+          "task": "撰写每一页文字",
+          "done": true
+        },
+        {
+          "task": "按品牌模板设计",
+          "done": true
+        },
+        {
+          "task": "逐页校对",
+          "done": true
+        },
+        {
+          "task": "文案、话题标签和替代文字",
+          "done": true
+        },
+        {
+          "task": "发布",
+          "done": true
+        }
+      ],
+      "thumbnail": "assets/sample-carousel-cover.zh.jpg",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 5,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:02",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": ""
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:30:01",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "大纲已确认",
+                "done": false
+              },
+              {
+                "task": "撰写每一页文字",
+                "done": false
+              },
+              {
+                "task": "按品牌模板设计",
+                "done": false
+              },
+              {
+                "task": "逐页校对",
+                "done": false
+              },
+              {
+                "task": "文案、话题标签和替代文字",
+                "done": false
+              },
+              {
+                "task": "发布",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:30:01",
+          "note": "status -> ready",
+          "previous": {
+            "status": "drafted"
+          }
+        },
+        {
+          "revision": 4,
+          "at": "2026-11-21T21:30:02",
+          "note": "",
+          "previous": {
+            "thumbnail": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W49-tue-reel1",
+      "date": "2026-12-01",
+      "day": "tue",
+      "time": "18:00",
+      "format": "reel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "youtube_shorts"
+      ],
+      "status": "ready",
+      "pillar": "习惯方法",
+      "campaign": "",
+      "title": "晨间习惯坚持不下去的三个原因",
+      "hook": "你的晨间习惯坚持不下去，不是因为你懒。",
+      "concept": "把「坚持不下去」重新定义为设计问题：照搬别人、太长、没有从前一晚开始。用本周拍好的口播素材剪辑。",
+      "script": [
+        {
+          "time": "0-2s",
+          "visual": "厨房台面近景，晨光",
+          "voiceover": "你的晨间习惯坚持不下去，不是因为你懒。",
+          "on_screen": "不是因为懒"
+        },
+        {
+          "time": "2-6s",
+          "visual": "推近",
+          "voiceover": "原因有三个。",
+          "on_screen": "三个原因"
+        },
+        {
+          "time": "6-17s",
+          "visual": "全景，空镜：五点的闹钟",
+          "voiceover": "一，你照搬了别人的习惯。先从一件适合你早晨的小事开始。",
+          "on_screen": "1. 不是你的"
+        },
+        {
+          "time": "17-28s",
+          "visual": "推近",
+          "voiceover": "二，太长了。给糟糕的日子准备一个十分钟版本。",
+          "on_screen": "2. 太长了"
+        },
+        {
+          "time": "28-40s",
+          "visual": "空镜：手机扣在床头柜上",
+          "voiceover": "三，它从前一晚就开始了。定一个放下手机的时间。",
+          "on_screen": "3. 从前一晚开始"
+        },
+        {
+          "time": "40-45s",
+          "visual": "回到近景",
+          "voiceover": "适合自己，足够简短，从前一晚开始。收藏起来明天用。",
+          "on_screen": "收藏明天用"
+        }
+      ],
+      "caption": "你的晨间习惯坚持不下去，不是因为你懒。\n\n而是因为：\n1. 照搬了别人的\n2. 太长了\n3. 从闹钟才开始，而不是从前一晚\n\n收藏起来明天早上用。你是哪一个？",
+      "cta": "收藏起来明天早上用",
+      "hashtags": [
+        "#晨间习惯",
+        "#自律",
+        "#慢生活"
+      ],
+      "creative_direction": "厨房台面口播，手机与眼睛齐平，侧面窗光。用 AI Content Studio 的剪辑清单：去掉开头空白、原因一的重说和开头的「嗯」。100% / 112% 交替推近。字幕在画面中下方。轻柔的 lo-fi 背景音乐。",
+      "checklist": [
+        {
+          "task": "脚本和开头钩子已确认",
+          "done": true
+        },
+        {
+          "task": "竖屏拍摄主画面（9:16，1080x1920 或 4K，30 fps）",
+          "done": true
+        },
+        {
+          "task": "补拍 3-5 段空镜（B-roll）",
+          "done": true
+        },
+        {
+          "task": "剪辑：剪切、节奏、音乐",
+          "done": true
+        },
+        {
+          "task": "字幕和画面文字",
+          "done": true
+        },
+        {
+          "task": "选择封面帧",
+          "done": true
+        },
+        {
+          "task": "文案、话题标签和替代文字",
+          "done": true
+        },
+        {
+          "task": "发布到 Instagram",
+          "done": true
+        },
+        {
+          "task": "同步发布到 TikTok（使用该平台的原生文案）",
+          "done": true
+        },
+        {
+          "task": "同步发布到 YouTube Shorts（使用该平台的原生文案）",
+          "done": true
+        }
+      ],
+      "thumbnail": "",
+      "footage": [
+        "media/raw-morning-zh.mp4"
+      ],
+      "platform_variants": {
+        "tiktok": {
+          "time": "19:00",
+          "caption": "你的晨间习惯坚持不下去 不是因为你懒 #晨间习惯 #自律"
+        },
+        "youtube_shorts": {
+          "time": "17:00",
+          "title": "晨间习惯坚持不下去的三个原因",
+          "caption": "适合自己，足够简短，从前一晚开始。"
+        }
+      },
+      "notes": "",
+      "revision": 4,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:02",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "footage": [],
+            "platform_variants": {
+              "tiktok": {
+                "time": "19:00",
+                "caption": ""
+              },
+              "youtube_shorts": {
+                "time": "17:00",
+                "caption": ""
+              }
+            }
+          }
+        },
+        {
+          "revision": 2,
+          "at": "2026-11-21T21:30:02",
+          "note": "",
+          "previous": {
+            "checklist": [
+              {
+                "task": "脚本和开头钩子已确认",
+                "done": false
+              },
+              {
+                "task": "竖屏拍摄主画面（9:16，1080x1920 或 4K，30 fps）",
+                "done": false
+              },
+              {
+                "task": "补拍 3-5 段空镜（B-roll）",
+                "done": false
+              },
+              {
+                "task": "剪辑：剪切、节奏、音乐",
+                "done": false
+              },
+              {
+                "task": "字幕和画面文字",
+                "done": false
+              },
+              {
+                "task": "选择封面帧",
+                "done": false
+              },
+              {
+                "task": "文案、话题标签和替代文字",
+                "done": false
+              },
+              {
+                "task": "发布到 Instagram",
+                "done": false
+              },
+              {
+                "task": "同步发布到 TikTok（使用该平台的原生文案）",
+                "done": false
+              },
+              {
+                "task": "同步发布到 YouTube Shorts（使用该平台的原生文案）",
+                "done": false
+              }
+            ]
+          }
+        },
+        {
+          "revision": 3,
+          "at": "2026-11-21T21:30:02",
+          "note": "status -> ready",
+          "previous": {
+            "status": "drafted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W49-wed-story1",
+      "date": "2026-12-02",
+      "day": "wed",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "drafted",
+      "pillar": "心态",
+      "campaign": "",
+      "title": "你是哪一个原因？",
+      "hook": "你是哪一个原因？",
+      "concept": "把周二的视频转成快拍，照顾没看到的粉丝，同时收集周五问答的问题。",
+      "script": [
+        {
+          "frame": 1,
+          "visual": "转发周二的 Reel",
+          "text": "错过了的看这里",
+          "sticker": "link to reel"
+        },
+        {
+          "frame": 2,
+          "visual": "米白底",
+          "text": "你是哪一个原因？",
+          "sticker": "poll: 照搬 / 太长 / 没从前一晚开始"
+        },
+        {
+          "frame": 3,
+          "visual": "笔记本上写着短短的清单",
+          "text": "你的十分钟版本是什么样的？",
+          "sticker": "question box"
+        }
+      ],
+      "caption": "",
+      "cta": "投票并回答提问框",
+      "hashtags": [],
+      "creative_direction": "品牌米白底，第 3 帧用手写风格文字。",
+      "checklist": [
+        {
+          "task": "规划每一帧",
+          "done": false
+        },
+        {
+          "task": "拍摄或设计画面（9:16）",
+          "done": false
+        },
+        {
+          "task": "添加互动贴纸（投票、测验、提问或链接）",
+          "done": false
+        },
+        {
+          "task": "发布",
+          "done": false
+        },
+        {
+          "task": "长期有用的内容加入精选快拍",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:01",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W49-thu-email1",
+      "date": "2026-12-03",
+      "day": "thu",
+      "time": "08:00",
+      "format": "email",
+      "platforms": [
+        "email"
+      ],
+      "status": "drafted",
+      "pillar": "习惯方法",
+      "campaign": "免费《十分钟晨间指南》",
+      "title": "邮件：你的十分钟晨间版本",
+      "hook": "坚持完美晨间流程的第三天，我睡过头了四十分钟，差点就放弃了。",
+      "concept": "讲「太长了」背后的故事，介绍十分钟最小版本，并上线免费指南来增加订阅。",
+      "script": [
+        "开头：第三天睡过头的故事（三四句，真诚、带点幽默）",
+        "观点：习惯要扛得住最糟糕的早晨，而不是最好的早晨",
+        "十分钟版本三步：开灯喝水（2 分钟）、一首歌拉伸（4 分钟）、写一行字（4 分钟）",
+        "按钮：领取免费《十分钟晨间指南》",
+        "附言：回复我你的「最小版本」，每一封我都会看。"
+      ],
+      "caption": "",
+      "cta": "领取免费《十分钟晨间指南》",
+      "hashtags": [],
+      "creative_direction": "纯文字风格邮件，配一张笔记本和马克杯的照片。一个按钮，正文不超过 500 字。",
+      "checklist": [
+        {
+          "task": "邮件标题和预览文字",
+          "done": false
+        },
+        {
+          "task": "撰写正文",
+          "done": false
+        },
+        {
+          "task": "添加链接和行动按钮",
+          "done": false
+        },
+        {
+          "task": "发送测试邮件并在手机上检查",
+          "done": false
+        },
+        {
+          "task": "定时发送",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:01",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "campaign": "",
+            "status": "planned",
+            "subject": "",
+            "preview_text": "",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "cta": "",
+            "creative_direction": ""
+          }
+        }
+      ],
+      "subject": "你的十分钟晨间版本",
+      "preview_text": "给最糟糕的早晨准备的习惯（附免费指南）"
+    },
+    {
+      "id": "2026W49-thu-reel1",
+      "date": "2026-12-03",
+      "day": "thu",
+      "time": "18:00",
+      "format": "reel",
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "youtube_shorts"
+      ],
+      "status": "drafted",
+      "pillar": "慢生活",
+      "campaign": "免费《十分钟晨间指南》",
+      "title": "状态最差那天的十分钟晨间习惯（实时）",
+      "hook": "这是我状态最差那天的全部晨间习惯：只要十分钟。",
+      "concept": "用实时计时展示最小版本，证明它适合任何早晨。软性推广免费指南。",
+      "script": [
+        {
+          "time": "0-2s",
+          "visual": "计时器从 10:00 开始，台灯亮起",
+          "voiceover": "这是我状态最差那天的全部晨间习惯。",
+          "on_screen": "只要十分钟"
+        },
+        {
+          "time": "2-12s",
+          "visual": "床头的水杯、拉开窗帘",
+          "voiceover": "先开灯、喝水，两分钟。",
+          "on_screen": "开灯 + 喝水"
+        },
+        {
+          "time": "12-30s",
+          "visual": "跟着一首歌拉伸",
+          "voiceover": "一首歌的时间拉伸，歌停就结束。",
+          "on_screen": "一首歌"
+        },
+        {
+          "time": "30-40s",
+          "visual": "在笔记本上写一行字",
+          "voiceover": "在本子上写一行字。",
+          "on_screen": "一行字"
+        },
+        {
+          "time": "40-45s",
+          "visual": "计时器归零",
+          "voiceover": "完整指南免费送你，主页链接领取。",
+          "on_screen": "免费指南：主页链接"
+        }
+      ],
+      "caption": "状态最差那天的全部晨间习惯：十分钟，从头到尾。\n\n开灯喝水。一首歌拉伸。写一行字。\n\n完整指南免费：主页链接领取。",
+      "cta": "主页链接领取免费指南",
+      "hashtags": [
+        "#晨间习惯",
+        "#慢生活",
+        "#十分钟"
+      ],
+      "creative_direction": "配音加空镜，不露脸。俯拍和侧拍，左上角安全区内放实时计时器。安静的原声吉他音乐，自然光，米白和藏青色调。",
+      "checklist": [
+        {
+          "task": "脚本和开头钩子已确认",
+          "done": false
+        },
+        {
+          "task": "竖屏拍摄主画面（9:16，1080x1920 或 4K，30 fps）",
+          "done": false
+        },
+        {
+          "task": "补拍 3-5 段空镜（B-roll）",
+          "done": false
+        },
+        {
+          "task": "剪辑：剪切、节奏、音乐",
+          "done": false
+        },
+        {
+          "task": "字幕和画面文字",
+          "done": false
+        },
+        {
+          "task": "选择封面帧",
+          "done": false
+        },
+        {
+          "task": "文案、话题标签和替代文字",
+          "done": false
+        },
+        {
+          "task": "发布到 Instagram",
+          "done": false
+        },
+        {
+          "task": "同步发布到 TikTok（使用该平台的原生文案）",
+          "done": false
+        },
+        {
+          "task": "同步发布到 YouTube Shorts（使用该平台的原生文案）",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {
+        "tiktok": {
+          "time": "19:00",
+          "caption": "状态最差那天的晨间习惯 只要十分钟 指南在主页 #晨间习惯 #慢生活"
+        },
+        "youtube_shorts": {
+          "time": "17:00",
+          "title": "糟糕日子的十分钟晨间习惯",
+          "caption": "开灯喝水、一首歌、一行字。"
+        }
+      },
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:03",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": "",
+            "campaign": "",
+            "status": "planned",
+            "hook": "",
+            "concept": "",
+            "script": "",
+            "caption": "",
+            "cta": "",
+            "hashtags": [],
+            "creative_direction": "",
+            "platform_variants": {
+              "tiktok": {
+                "time": "19:00",
+                "caption": ""
+              },
+              "youtube_shorts": {
+                "time": "17:00",
+                "caption": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2026W49-fri-story1",
+      "date": "2026-12-04",
+      "day": "fri",
+      "time": "08:30",
+      "format": "story",
+      "platforms": [
+        "instagram"
+      ],
+      "status": "planned",
+      "pillar": "心态",
+      "campaign": "",
+      "title": "周五问答：你们的早晨问题",
+      "hook": "",
+      "concept": "",
+      "script": "",
+      "caption": "",
+      "cta": "",
+      "hashtags": [],
+      "creative_direction": "",
+      "checklist": [
+        {
+          "task": "规划每一帧",
+          "done": false
+        },
+        {
+          "task": "拍摄或设计画面（9:16）",
+          "done": false
+        },
+        {
+          "task": "添加互动贴纸（投票、测验、提问或链接）",
+          "done": false
+        },
+        {
+          "task": "发布",
+          "done": false
+        },
+        {
+          "task": "长期有用的内容加入精选快拍",
+          "done": false
+        }
+      ],
+      "thumbnail": "",
+      "footage": [],
+      "platform_variants": {},
+      "notes": "",
+      "revision": 2,
+      "created_at": "2026-11-21T21:30:00",
+      "updated_at": "2026-11-21T21:30:01",
+      "history": [
+        {
+          "revision": 1,
+          "at": "2026-11-21T21:30:01",
+          "note": "初稿",
+          "previous": {
+            "title": "",
+            "pillar": ""
+          }
+        }
+      ]
+    }
+  ],
+  "removed": [],
+  "created_at": "2026-11-21T21:30:00",
+  "updated_at": "2026-11-21T21:30:03"
+}

@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__PAGE_TITLE__</title>
+<style>
+:root {
+  --bg: #F6F4F0;
+  --surface: #FFFFFF;
+  --surface-2: #F0EDE7;
+  --text: #1C1B1F;
+  --muted: #6E6A73;
+  --line: #E4DFD7;
+  --accent: #E26D5A;
+  --accent-ink: #FFFFFF;
+  --shadow: 0 1px 2px rgba(28, 27, 31, .06), 0 4px 14px rgba(28, 27, 31, .06);
+  --reel: #D9467A;
+  --story: #E8962E;
+  --carousel: #6A5AE0;
+  --email: #1B9A86;
+  --s-planned: #8D8A93;
+  --s-drafted: #3A7BE0;
+  --s-ready: #D98B0B;
+  --s-published: #1F9D55;
+  --radius: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141317;
+    --surface: #1E1D22;
+    --surface-2: #27262C;
+    --text: #F2F0F4;
+    --muted: #A6A2AD;
+    --line: #34323A;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
+    --reel: #F0679A;
+    --story: #F4AE55;
+    --carousel: #8F83F5;
+    --email: #3CC2AB;
+    --s-planned: #9C99A3;
+    --s-drafted: #6EA2F2;
+    --s-ready: #F2B544;
+    --s-published: #4CC37E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141317;
+  --surface: #1E1D22;
+  --surface-2: #27262C;
+  --text: #F2F0F4;
+  --muted: #A6A2AD;
+  --line: #34323A;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
+  --reel: #F0679A;
+  --story: #F4AE55;
+  --carousel: #8F83F5;
+  --email: #3CC2AB;
+  --s-planned: #9C99A3;
+  --s-drafted: #6EA2F2;
+  --s-ready: #F2B544;
+  --s-published: #4CC37E;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; }
+.wrap { max-width: 1480px; margin: 0 auto; padding: 24px 24px 48px; }
+
+/* header */
+.top { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; margin-bottom: 18px; }
+.eyebrow { font-size: 13px; color: var(--muted); letter-spacing: .02em; display: flex; gap: 8px; flex-wrap: wrap; }
+.eyebrow b { color: var(--text); font-weight: 600; }
+h1 { font-size: clamp(26px, 3.2vw, 38px); line-height: 1.1; margin: 4px 0 6px; letter-spacing: -.02em; }
+h1 .range { color: var(--muted); font-weight: 500; }
+.theme-line { color: var(--muted); max-width: 70ch; }
+.theme-line b { color: var(--text); font-weight: 600; }
+.progress { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 300px; box-shadow: var(--shadow); }
+.counter { display: flex; align-items: baseline; gap: 6px; }
+.counter strong { font-size: 32px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.counter span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { display: flex; height: 8px; border-radius: 99px; overflow: hidden; background: var(--surface-2); margin: 10px 0 8px; }
+.bar i { display: block; height: 100%; }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+.legend button { background: none; border: 0; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; color: var(--muted); }
+.legend button[aria-pressed="true"] { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+/* toolbar */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 16px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 6px 12px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; font-size: 13.5px; }
+.chip[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.spacer { flex: 1; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 7px 12px; cursor: pointer; font-size: 13.5px; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.notice { display: none; background: var(--surface); border: 1px dashed var(--accent); border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+.notice.show { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+/* week grid */
+.week-scroll { overflow-x: auto; padding-bottom: 6px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(158px, 1fr)); gap: 12px; min-width: 1120px; }
+.day { background: var(--surface-2); border-radius: var(--radius); padding: 10px; min-height: 240px; display: flex; flex-direction: column; gap: 10px; }
+.day.today { outline: 2px solid var(--accent); outline-offset: -2px; }
+.day-head { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 4px 0; }
+.day-name { font-weight: 650; }
+.day-date { color: var(--muted); font-size: 13px; }
+.day-count { font-size: 12px; color: var(--muted); }
+.empty { color: var(--muted); font-size: 13px; padding: 16px 6px; text-align: center; border: 1px dashed var(--line); border-radius: 10px; }
+
+/* card */
+.card { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; cursor: pointer; border: 1px solid transparent; transition: transform .12s ease, border-color .12s ease; display: flex; flex-direction: column; }
+.card:hover, .card:focus-visible { transform: translateY(-2px); border-color: var(--line); outline: none; }
+.card.is-published { opacity: .78; }
+.thumb { position: relative; aspect-ratio: 4 / 5; background: var(--fmt); overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph { position: absolute; inset: 0; padding: 34px 12px 12px; color: #fff; display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--fmt) 70%, #ffffff) 0%, var(--fmt) 55%, color-mix(in srgb, var(--fmt) 70%, #000000) 100%); }
+.ph svg { position: absolute; right: -14px; top: 22px; width: 96px; height: 96px; opacity: .22; }
+.ph p { margin: 0; font-weight: 650; font-size: 14px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 0 1px 2px rgba(0,0,0,.18); }
+.badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.55); color: #fff; font-size: 11.5px; font-weight: 650; letter-spacing: .03em; text-transform: uppercase; padding: 3px 8px 3px 7px; border-radius: 99px; display: inline-flex; gap: 5px; align-items: center; backdrop-filter: blur(4px); }
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--fmt); box-shadow: 0 0 0 1.5px #fff; }
+.time { position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,.92); color: #1C1B1F; font-size: 12px; font-weight: 650; padding: 3px 7px; border-radius: 99px; font-variant-numeric: tabular-nums; }
+.card-body { padding: 9px 10px 10px; display: flex; flex-direction: column; gap: 7px; }
+.card-title { margin: 0; font-size: 13.5px; font-weight: 620; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-meta { display: flex; justify-content: space-between; gap: 6px; font-size: 11.5px; color: var(--muted); }
+.status { align-self: flex-start; border: 0; border-radius: 99px; padding: 3px 9px 3px 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: inline-flex; gap: 6px; align-items: center;
+  background: color-mix(in srgb, var(--st) 16%, transparent); color: var(--st); }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--st); }
+.fmt-reel { --fmt: var(--reel); } .fmt-story { --fmt: var(--story); } .fmt-carousel { --fmt: var(--carousel); } .fmt-email { --fmt: var(--email); }
+.st-planned { --st: var(--s-planned); } .st-drafted { --st: var(--s-drafted); } .st-ready { --st: var(--s-ready); } .st-published { --st: var(--s-published); }
+
+/* dialog */
+dialog { border: 0; padding: 0; border-radius: 18px; width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 48px); background: var(--surface); color: var(--text); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+dialog::backdrop { background: rgba(20, 19, 23, .55); }
+.dlg-head { position: sticky; top: 0; background: var(--surface); padding: 18px 20px 12px; border-bottom: 1px solid var(--line); z-index: 1; }
+.dlg-head h2 { margin: 6px 0 10px; font-size: 21px; line-height: 1.25; }
+.dlg-sub { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 99px; padding: 3px 9px; font-size: 12px; font-weight: 650; background: color-mix(in srgb, var(--fmt) 16%, transparent); color: var(--fmt); text-transform: uppercase; letter-spacing: .03em; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button { border: 0; background: none; padding: 6px 11px; cursor: pointer; font-size: 13px; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--st); color: #fff; font-weight: 600; }
+.dlg-body { padding: 6px 20px 8px; }
+.field { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.field:last-child { border-bottom: 0; }
+.field h4 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+.field .txt { white-space: pre-wrap; }
+.field ol, .field ul { margin: 0; padding-left: 20px; }
+.field li { margin: 4px 0; }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; font-size: 14px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; white-space: pre-wrap; }
+.copy { border: 1px solid var(--line); background: none; border-radius: 8px; padding: 2px 8px; font-size: 11.5px; cursor: pointer; text-transform: none; letter-spacing: 0; color: var(--muted); }
+.checks label { display: flex; gap: 9px; align-items: flex-start; padding: 4px 0; cursor: pointer; }
+.checks input { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; }
+.checks .done span { text-decoration: line-through; color: var(--muted); }
+.dlg-foot { position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--line); padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+textarea.out { width: 100%; min-height: 160px; font: 12.5px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px); background: var(--text); color: var(--bg); padding: 9px 14px; border-radius: 10px; font-size: 14px; opacity: 0; transition: .2s; pointer-events: none; z-index: 10; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+footer { margin-top: 22px; color: var(--muted); font-size: 12.5px; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 16px 16px 40px; }
+  .top { grid-template-columns: 1fr; }
+  .progress { min-width: 0; }
+  .week-scroll { overflow: visible; }
+  .week { grid-template-columns: 1fr; min-width: 0; }
+  .day { min-height: 0; }
+  .day-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kv { grid-template-columns: 78px 1fr; font-size: 13.5px; }
+}
+@media print {
+  body { background: #fff; }
+  .toolbar, .notice, .status, footer { display: none !important; }
+  .week-scroll { overflow: visible; }
+  .week { min-width: 0; }
+  .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="title"></h1>
+      <div class="theme-line" id="themeLine"></div>
+    </div>
+    <div class="progress" aria-live="polite">
+      <div class="counter"><strong id="doneCount">0</strong><span id="totalCount">/ 0 published</span></div>
+      <div class="bar" id="bar"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </header>
+
+  <div class="toolbar" id="toolbar"></div>
+  <div class="notice" id="notice"></div>
+
+  <div class="week-scroll"><main class="week" id="week"></main></div>
+
+  <footer id="foot"></footer>
+</div>
+
+<dialog id="detail" aria-labelledby="dlgTitle"></dialog>
+<dialog id="exportDlg" aria-labelledby="expTitle"></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const PLAN = /*__PLAN_JSON__*/null;
+const BRAND = /*__BRAND_JSON__*/null || {};
+
+const LANG = String(BRAND.language || (PLAN && PLAN.language) || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
+const I18N = {
+  en: {
+    locale: "en-GB",
+    status: { planned: "Planned", drafted: "Drafted", ready: "Ready", published: "Published" },
+    format: { reel: "Reel", story: "Story", carousel: "Carousel", email: "Email" },
+    platform: { instagram: "Instagram", tiktok: "TikTok", youtube_shorts: "YouTube Shorts", email: "Email" },
+    platformShort: { instagram: "IG", tiktok: "TikTok", youtube_shorts: "Shorts", email: "Email" },
+    day: { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday", sat: "Saturday", sun: "Sunday" },
+    dayShort: { mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat", sun: "Sun" },
+    contentPlan: "Content plan",
+    items: n => n + (n === 1 ? " item" : " items"),
+    timesIn: tz => "Times in " + tz,
+    week: n => "Week " + n + " ",
+    theme: "Theme: ", goals: "Goals: ",
+    publishedOf: (total, ready) => "/ " + total + " published · " + ready + " ready",
+    showOnly: s => "Show only " + s.toLowerCase(),
+    all: "All", themeBtn: "◐ Theme", themeTitle: "Switch light / dark", print: "Print", save: "Save changes",
+    changeStatus: (id, s) => id + " status → " + s,
+    changeCheck: (id, task, done) => id + " checklist \"" + task + "\" → " + (done ? "done" : "not done"),
+    notice: n => (n === 1 ? "1 change is" : n + " changes are") + " saved in this browser only. Send " + (n === 1 ? "it" : "them") + " to Kimi to keep " + (n === 1 ? "it" : "them") + " in the plan.",
+    discard: "Discard", discarded: "Local changes discarded",
+    ideaTbw: "Idea to be written", untitled: "Untitled", untitledFormat: f => "Untitled " + f.toLowerCase(),
+    at: " at ", nextStatus: "Click to move to the next status",
+    filtered: "Filtered out", rest: "Rest day",
+    copy: "Copy", copied: l => l + " copied", copyBlocked: "Copy blocked here: select the text manually",
+    pillar: "Pillar: ", campaign: "Campaign: ",
+    subject: "Subject line", preview: "Preview text", hook: "Hook", concept: "Concept",
+    slides: "Slides", frames: "Story frames", outline: "Email outline", script: "Script",
+    caption: "Caption", cta: "Call to action", hashtags: "Hashtags", direction: "Creative direction",
+    crosspost: "Cross-posting", checklist: "Production checklist", footage: "Footage", notes: "Notes",
+    itemId: "Item id", revision: (id, rev) => id + " · revision " + rev,
+    regen: "Copy “regenerate” request", copyCaption: "Copy caption", close: "Close",
+    regenPrompt: (it, fmt, day, week) => "Using AI Content Studio, regenerate item " + it.id + " (" + fmt + " on " + day + " at " + it.time + ") in my week " + week + " plan. Keep its date, time and format and leave every other item unchanged. What to change: ",
+    applyIntro: week => "Using AI Content Studio, apply these changes to my week " + week + " plan:",
+    noChanges: "No changes yet.", saveTitle: "Save changes to the plan",
+    saveSub: "This page can't write to your plan file. Paste the short version into the Kimi chat, or download the full plan and attach it.",
+    shortVersion: "Short version: paste into Kimi", fullJson: "Full plan JSON", download: "Download JSON", done: "Done",
+    downloadStarted: "Download started (if blocked, use Copy)", downloadBlocked: "Download blocked here: use Copy instead",
+    noData: "No plan data was embedded in this page.",
+    footer: (week, updated) => "Generated by AI Content Studio from " + week + " (plan updated " + updated + "). Status and checklist clicks are saved in this browser only, until you send them to Kimi with “Save changes”.",
+    labels: { subject: "Subject", preview: "Preview text", hook: "Hook", script: "Script", caption: "Caption", cta: "CTA", hashtags: "Hashtags", regen: "Regenerate request", changes: "Changes", plan: "Plan JSON", text: "Text" }
+  },
+  zh: {
+    locale: "zh-CN",
+    status: { planned: "已计划", drafted: "已起草", ready: "待发布", published: "已发布" },
+    format: { reel: "Reel", story: "快拍", carousel: "轮播图", email: "邮件" },
+    platform: { instagram: "Instagram", tiktok: "TikTok", youtube_shorts: "YouTube Shorts", email: "邮件" },
+    platformShort: { instagram: "IG", tiktok: "TikTok", youtube_shorts: "Shorts", email: "邮件" },
+    day: { mon: "周一", tue: "周二", wed: "周三", thu: "周四", fri: "周五", sat: "周六", sun: "周日" },
+    dayShort: { mon: "周一", tue: "周二", wed: "周三", thu: "周四", fri: "周五", sat: "周六", sun: "周日" },
+    contentPlan: "内容计划",
+    items: n => n + " 条内容",
+    timesIn: tz => "时间：" + tz,
+    week: n => "第 " + n + " 周 ",
+    theme: "主题：", goals: "目标：",
+    publishedOf: (total, ready) => "/ " + total + " 已发布 · " + ready + " 待发布",
+    showOnly: s => "只看" + s,
+    all: "全部", themeBtn: "◐ 深浅色", themeTitle: "切换浅色/深色", print: "打印", save: "保存更改",
+    changeStatus: (id, s) => id + " 状态 → " + s,
+    changeCheck: (id, task, done) => id + " 清单「" + task + "」→ " + (done ? "已完成" : "未完成"),
+    notice: n => n + " 处更改只保存在这个浏览器里。发给 Kimi 后才会写进计划。",
+    discard: "放弃", discarded: "已放弃本地更改",
+    ideaTbw: "待写的选题", untitled: "未命名", untitledFormat: f => "未命名的" + f,
+    at: " · ", nextStatus: "点击切换到下一个状态",
+    filtered: "已被筛选隐藏", rest: "休息日",
+    copy: "复制", copied: l => "已复制" + l, copyBlocked: "这里无法复制：请手动选中文字",
+    pillar: "内容支柱：", campaign: "活动：",
+    subject: "邮件标题", preview: "预览文字", hook: "开头钩子", concept: "创意概念",
+    slides: "轮播页", frames: "快拍画面", outline: "邮件大纲", script: "脚本",
+    caption: "文案", cta: "行动号召", hashtags: "话题标签", direction: "创意方向",
+    crosspost: "多平台同步", checklist: "制作清单", footage: "素材", notes: "备注",
+    itemId: "内容编号", revision: (id, rev) => id + " · 第 " + rev + " 版",
+    regen: "复制「重新生成」指令", copyCaption: "复制文案", close: "关闭",
+    regenPrompt: (it, fmt, day, week) => "请用 AI Content Studio 重新生成我 " + week + " 计划里的 " + it.id + "（" + fmt + "，" + day + " " + it.time + "）。保持日期、时间和形式不变，其他内容都不要动。需要修改的是：",
+    applyIntro: week => "请用 AI Content Studio 把这些更改应用到我 " + week + " 的计划：",
+    noChanges: "还没有更改。", saveTitle: "把更改保存到计划",
+    saveSub: "这个页面无法直接修改计划文件。把下面的简短版本粘贴到 Kimi 对话里，或者下载完整计划 JSON 后作为附件发送。",
+    shortVersion: "简短版本：粘贴到 Kimi", fullJson: "完整计划 JSON", download: "下载 JSON", done: "完成",
+    downloadStarted: "已开始下载（如被拦截，请用复制）", downloadBlocked: "这里无法下载：请改用复制",
+    noData: "此页面没有嵌入计划数据。",
+    footer: (week, updated) => "由 AI Content Studio 根据 " + week + " 生成（计划更新于 " + updated + "）。状态和清单的点击只保存在这个浏览器里，点「保存更改」发给 Kimi 后才会写进计划。",
+    labels: { subject: "邮件标题", preview: "预览文字", hook: "钩子", script: "脚本", caption: "文案", cta: "行动号召", hashtags: "话题标签", regen: "重新生成指令", changes: "更改", plan: "计划 JSON", text: "文字" }
+  }
+};
+const T = I18N[LANG];
+const STATUSES = ["planned", "drafted", "ready", "published"];
+const STATUS_LABEL = T.status;
+const FORMATS = ["reel", "story", "carousel", "email"];
+const FORMAT_LABEL = T.format;
+const PLATFORM_SHORT = T.platformShort;
+const PLATFORM_LABEL = T.platform;
+const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const DAY_LABEL = T.day;
+document.documentElement.lang = LANG === "zh" ? "zh-CN" : "en";
+const ICONS = {
+  reel: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M10 8.5v7l6-3.5z" fill="#fff"/></svg>',
+  story: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-dasharray="4 2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5" stroke-dasharray="0"/></svg>',
+  carousel: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="6" y="4" width="12" height="16" rx="2.5"/><path d="M3 7v10M21 7v10"/></svg>',
+  email: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>'
+};
+
+const store = {
+  get(key) { try { return JSON.parse(localStorage.getItem(key)); } catch (e) { return null; } },
+  set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ } },
+  del(key) { try { localStorage.removeItem(key); } catch (e) { /* storage unavailable */ } }
+};
+const KEY = "acs-calendar:" + (PLAN && PLAN.week) + ":" + (PLAN && PLAN.updated_at || "");
+let overlay = store.get(KEY) || { status: {}, checks: {} };
+const filter = { format: "all", status: "all" };
+
+if (BRAND.accent && /^#[0-9a-f]{6}$/i.test(BRAND.accent)) {
+  document.documentElement.style.setProperty("--accent", BRAND.accent);
+}
+
+function el(tag, attrs, children) {
+  const node = document.createElement(tag);
+  for (const [key, value] of Object.entries(attrs || {})) {
+    if (value === undefined || value === null || value === false) continue;
+    if (key === "class") node.className = value;
+    else if (key === "text") node.textContent = value;
+    else if (key === "html") node.innerHTML = value;
+    else if (key.startsWith("on")) node.addEventListener(key.slice(2), value);
+    else node.setAttribute(key, value === true ? "" : value);
+  }
+  for (const child of [].concat(children || [])) {
+    if (child === null || child === undefined || child === false) continue;
+    node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+  }
+  return node;
+}
+function parseDate(iso) { const [y, m, d] = iso.split("-").map(Number); return new Date(y, m - 1, d); }
+function fmtDate(iso, opts) { return parseDate(iso).toLocaleDateString(T.locale, opts); }
+function statusOf(item) { return overlay.status[item.id] || item.status || "planned"; }
+function checksOf(item) {
+  const local = overlay.checks[item.id] || {};
+  return (item.checklist || []).map((c, i) => (i in local ? local[i] : !!c.done));
+}
+function persist() { store.set(KEY, overlay); renderNotice(); }
+function toast(message) {
+  const t = document.getElementById("toast");
+  t.textContent = message; t.classList.add("show");
+  clearTimeout(toast.timer); toast.timer = setTimeout(() => t.classList.remove("show"), 1800);
+}
+async function copyText(text, label) {
+  try { await navigator.clipboard.writeText(text); toast(T.copied(label || T.labels.text)); }
+  catch (e) {
+    const area = el("textarea", { class: "out" }); area.value = text;
+    document.body.append(area); area.select();
+    let ok = false; try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    area.remove(); toast(ok ? T.copied(label || T.labels.text) : T.copyBlocked);
+  }
+}
+function plain(text) { return String(text == null ? "" : text).replace(/\*\*(.+?)\*\*/g, "$1"); }
+function asText(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "string") return plain(value);
+  if (Array.isArray(value)) return value.map((v, i) => (i + 1) + ". " + (typeof v === "object" ? Object.entries(v).filter(([, x]) => x !== "" && x != null).map(([k, x]) => k + ": " + x).join(" | ") : v)).join("\n");
+  if (typeof value === "object") return Object.entries(value).map(([k, v]) => k + ": " + asText(v)).join("\n");
+  return String(value);
+}
+function isFilled(v) { return v !== null && v !== undefined && (typeof v !== "string" || v.trim() !== "") && (!Array.isArray(v) || v.length) && (typeof v !== "object" || Array.isArray(v) || Object.keys(v).length); }
+
+/* ---------------- header + toolbar ---------------- */
+function renderHeader() {
+  const items = PLAN.items;
+  const weekNo = (PLAN.week || "").split("W")[1] || "";
+  const brandBits = [BRAND.name || PLAN.brand, BRAND.handle || PLAN.handle].filter(Boolean);
+  const eyebrow = document.getElementById("eyebrow");
+  eyebrow.replaceChildren(
+    brandBits.length ? el("b", { text: brandBits.join(" · ") }) : el("b", { text: T.contentPlan }),
+    el("span", { text: T.items(items.length) }),
+    PLAN.timezone ? el("span", { text: T.timesIn(PLAN.timezone) }) : null
+  );
+  document.getElementById("title").replaceChildren(
+    T.week(Number(weekNo)),
+    el("span", { class: "range", text: fmtDate(PLAN.start_date, { day: "numeric", month: "short" }) + " – " + fmtDate(PLAN.end_date, { day: "numeric", month: "short", year: "numeric" }) })
+  );
+  const themeBits = [];
+  if (PLAN.theme) themeBits.push(el("span", {}, [el("b", { text: T.theme }), PLAN.theme]));
+  if (PLAN.goals && PLAN.goals.length) themeBits.push(el("span", {}, [themeBits.length ? " · " : "", el("b", { text: T.goals }), PLAN.goals.join("; ")]));
+  document.getElementById("themeLine").replaceChildren(...themeBits);
+}
+
+function renderProgress() {
+  const items = PLAN.items;
+  const counts = Object.fromEntries(STATUSES.map(s => [s, items.filter(it => statusOf(it) === s).length]));
+  document.getElementById("doneCount").textContent = counts.published;
+  document.getElementById("totalCount").textContent = T.publishedOf(items.length, counts.ready);
+  const bar = document.getElementById("bar");
+  bar.replaceChildren(...["published", "ready", "drafted", "planned"].map(s =>
+    el("i", { class: "st-" + s, style: "width:" + (items.length ? (100 * counts[s] / items.length) : 0) + "%;background:var(--st)", title: STATUS_LABEL[s] + ": " + counts[s] })));
+  const legend = document.getElementById("legend");
+  legend.replaceChildren(...STATUSES.map(s => el("button", {
+    class: "st-" + s, "aria-pressed": String(filter.status === s), title: T.showOnly(STATUS_LABEL[s]),
+    onclick: () => { filter.status = filter.status === s ? "all" : s; renderAll(); }
+  }, [el("span", { class: "dot", style: "background:var(--st)" }), STATUS_LABEL[s] + " " + counts[s]])));
+}
+
+function renderToolbar() {
+  const bar = document.getElementById("toolbar");
+  const present = FORMATS.filter(f => PLAN.items.some(it => it.format === f));
+  const chips = [el("button", { class: "chip", "aria-pressed": String(filter.format === "all"), onclick: () => { filter.format = "all"; renderAll(); } }, T.all)]
+    .concat(present.map(f => el("button", {
+      class: "chip fmt-" + f, "aria-pressed": String(filter.format === f),
+      onclick: () => { filter.format = filter.format === f ? "all" : f; renderAll(); }
+    }, [el("span", { class: "dot", style: "background:var(--fmt)" }), FORMAT_LABEL[f] + " " + PLAN.items.filter(it => it.format === f).length])));
+  bar.replaceChildren(...chips, el("span", { class: "spacer" }),
+    el("button", { class: "btn", onclick: toggleTheme, title: T.themeTitle }, T.themeBtn),
+    el("button", { class: "btn", onclick: () => window.print() }, T.print),
+    el("button", { class: "btn primary", onclick: openExport }, T.save));
+}
+
+function changes() {
+  const list = [];
+  for (const it of PLAN.items) {
+    if (overlay.status[it.id] && overlay.status[it.id] !== it.status) list.push({ id: it.id, kind: "status", text: T.changeStatus(it.id, LANG === "zh" ? STATUS_LABEL[overlay.status[it.id]] + " (" + overlay.status[it.id] + ")" : overlay.status[it.id]) });
+    const local = overlay.checks[it.id] || {};
+    for (const [i, value] of Object.entries(local)) {
+      const task = (it.checklist || [])[i];
+      if (task && !!task.done !== value) list.push({ id: it.id, kind: "check", text: T.changeCheck(it.id, task.task, value) });
+    }
+  }
+  return list;
+}
+
+function renderNotice() {
+  const n = changes().length;
+  const box = document.getElementById("notice");
+  box.classList.toggle("show", n > 0);
+  if (!n) { box.replaceChildren(); return; }
+  box.replaceChildren(
+    el("span", { text: T.notice(n) }),
+    el("button", { class: "btn primary", onclick: openExport }, T.save),
+    el("button", { class: "btn", onclick: () => { overlay = { status: {}, checks: {} }; store.del(KEY); renderAll(); toast(T.discarded); } }, T.discard));
+}
+
+/* ---------------- week grid ---------------- */
+function visible(item) {
+  return (filter.format === "all" || item.format === filter.format) && (filter.status === "all" || statusOf(item) === filter.status);
+}
+
+function card(item) {
+  const status = statusOf(item);
+  const checks = checksOf(item);
+  const thumb = el("div", { class: "thumb" });
+  if (item.thumbnail) thumb.append(el("img", { src: item.thumbnail, alt: "", loading: "lazy" }));
+  else thumb.append(el("div", { class: "ph" }, [el("span", { html: ICONS[item.format] || "" }), el("p", { text: plain(item.hook || item.subject || item.title || T.ideaTbw) })]));
+  thumb.append(el("span", { class: "badge", text: FORMAT_LABEL[item.format] || item.format }), el("span", { class: "time", text: item.time }));
+  const plats = (item.platforms || []).map(p => PLATFORM_SHORT[p] || p).join(" · ");
+  return el("article", {
+    class: "card fmt-" + item.format + (status === "published" ? " is-published" : ""), tabindex: "0",
+    "aria-label": FORMAT_LABEL[item.format] + T.at + item.time + ": " + (plain(item.title) || T.untitled),
+    onclick: () => openDetail(item.id),
+    onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(item.id); } }
+  }, [
+    thumb,
+    el("div", { class: "card-body" }, [
+      el("h3", { class: "card-title", text: plain(item.title) || T.untitledFormat(FORMAT_LABEL[item.format] || "") }),
+      el("div", { class: "card-meta" }, [el("span", { text: plats }), checks.length ? el("span", { text: "✓ " + checks.filter(Boolean).length + "/" + checks.length }) : null]),
+      el("button", {
+        class: "status st-" + status, title: T.nextStatus,
+        onclick: (e) => { e.stopPropagation(); cycleStatus(item); }
+      }, STATUS_LABEL[status])
+    ])
+  ]);
+}
+
+function renderWeek() {
+  const week = document.getElementById("week");
+  const todayIso = new Date().toISOString().slice(0, 10);
+  week.replaceChildren(...DAYS.map((day, index) => {
+    const date = new Date(parseDate(PLAN.start_date).getTime() + index * 86400000);
+    const iso = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+    const all = PLAN.items.filter(it => it.day === day).sort((a, b) => (a.time || "").localeCompare(b.time || ""));
+    const shown = all.filter(visible);
+    return el("section", { class: "day" + (iso === todayIso ? " today" : ""), "aria-label": DAY_LABEL[day] }, [
+      el("div", { class: "day-head" }, [
+        el("div", {}, [el("span", { class: "day-name", text: T.dayShort[day] + " " }), el("span", { class: "day-date", text: fmtDate(iso, { day: "numeric", month: "short" }) })]),
+        el("span", { class: "day-count", text: all.length ? T.items(all.length) : "" })
+      ]),
+      shown.length ? el("div", { class: "day-cards", style: "display:flex;flex-direction:column;gap:10px" }, shown.map(card))
+        : el("div", { class: "empty", text: all.length ? T.filtered : T.rest })
+    ]);
+  }));
+  if (window.matchMedia("(max-width: 760px)").matches) {
+    week.querySelectorAll(".day-cards").forEach(n => n.removeAttribute("style"));
+  }
+}
+
+function cycleStatus(item) {
+  const next = STATUSES[(STATUSES.indexOf(statusOf(item)) + 1) % STATUSES.length];
+  setStatus(item, next);
+  toast((plain(item.title) || item.id) + " → " + STATUS_LABEL[next]);
+}
+function setStatus(item, status) {
+  if (status === item.status) delete overlay.status[item.id]; else overlay.status[item.id] = status;
+  persist(); renderAll();
+}
+
+/* ---------------- detail dialog ---------------- */
+function fieldBlock(label, value, copyLabel) {
+  if (!isFilled(value)) return null;
+  let content;
+  if (Array.isArray(value)) {
+    content = el("ol", {}, value.map(entry => {
+      if (entry && typeof entry === "object") {
+        return el("li", {}, el("dl", { class: "kv" }, Object.entries(entry).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })])));
+      }
+      return el("li", { text: plain(entry) });
+    }));
+  } else if (value && typeof value === "object") {
+    content = el("dl", { class: "kv" }, Object.entries(value).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })]));
+  } else {
+    content = el("div", { class: "txt", text: plain(value) });
+  }
+  return el("section", { class: "field" }, [
+    el("h4", {}, [label, copyLabel ? el("button", { class: "copy", onclick: () => copyText(asText(value), copyLabel) }, T.copy) : null]),
+    content
+  ]);
+}
+
+function regeneratePrompt(item) {
+  return T.regenPrompt(item, FORMAT_LABEL[item.format], DAY_LABEL[item.day], PLAN.week);
+}
+
+function openDetail(id) {
+  const item = PLAN.items.find(it => it.id === id);
+  if (!item) return;
+  const dlg = document.getElementById("detail");
+  const status = statusOf(item);
+  const checks = checksOf(item);
+  const variants = Object.entries(item.platform_variants || {}).filter(([, v]) => v && Object.values(v).some(isFilled));
+  dlg.replaceChildren(
+    el("div", { class: "dlg-head fmt-" + item.format }, [
+      el("div", { class: "dlg-sub" }, [
+        el("span", { class: "pill", text: FORMAT_LABEL[item.format] }),
+        el("span", { text: DAY_LABEL[item.day] + " " + fmtDate(item.date, { day: "numeric", month: "short" }) + " · " + item.time }),
+        el("span", { text: (item.platforms || []).map(p => PLATFORM_LABEL[p] || p).join(", ") }),
+        item.pillar ? el("span", { text: T.pillar + item.pillar }) : null,
+        item.campaign ? el("span", { text: T.campaign + item.campaign }) : null
+      ]),
+      el("h2", { id: "dlgTitle", text: plain(item.title) || T.untitled }),
+      el("div", { class: "seg", role: "group", "aria-label": "Status" }, STATUSES.map(s => el("button", {
+        class: "st-" + s, "aria-pressed": String(status === s), onclick: () => { setStatus(item, s); openDetail(id); }
+      }, STATUS_LABEL[s])))
+    ]),
+    el("div", { class: "dlg-body" }, [
+      item.format === "email" ? fieldBlock(T.subject, item.subject, T.labels.subject) : null,
+      item.format === "email" ? fieldBlock(T.preview, item.preview_text, T.labels.preview) : null,
+      fieldBlock(T.hook, item.hook, T.labels.hook),
+      fieldBlock(T.concept, item.concept),
+      fieldBlock(item.format === "carousel" ? T.slides : item.format === "story" ? T.frames : item.format === "email" ? T.outline : T.script, item.script, T.labels.script),
+      fieldBlock(T.caption, item.caption, T.labels.caption),
+      fieldBlock(T.cta, item.cta, T.labels.cta),
+      isFilled(item.hashtags) ? fieldBlock(T.hashtags, (item.hashtags || []).join(" "), T.labels.hashtags) : null,
+      fieldBlock(T.direction, item.creative_direction),
+      variants.length ? el("section", { class: "field" }, [el("h4", { text: T.crosspost }), el("dl", { class: "kv" }, variants.flatMap(([p, v]) => [el("dt", { text: PLATFORM_LABEL[p] || p }), el("dd", { text: asText(v) })]))]) : null,
+      checks.length ? el("section", { class: "field" }, [
+        el("h4", { text: T.checklist + " · " + checks.filter(Boolean).length + "/" + checks.length }),
+        el("div", { class: "checks" }, (item.checklist || []).map((task, i) => {
+          const box = el("input", { type: "checkbox", checked: checks[i] ? true : null, onchange: (e) => {
+            overlay.checks[item.id] = overlay.checks[item.id] || {};
+            if (!!task.done === e.target.checked) delete overlay.checks[item.id][i]; else overlay.checks[item.id][i] = e.target.checked;
+            persist(); renderProgress(); renderWeek(); openDetail(id);
+          } });
+          return el("label", { class: checks[i] ? "done" : "" }, [box, el("span", { text: task.task })]);
+        }))
+      ]) : null,
+      isFilled(item.footage) ? fieldBlock(T.footage, item.footage) : null,
+      fieldBlock(T.notes, item.notes),
+      el("section", { class: "field" }, [el("h4", { text: T.itemId }), el("div", { class: "txt", text: T.revision(item.id, item.revision || 1) })])
+    ]),
+    el("div", { class: "dlg-foot" }, [
+      el("button", { class: "btn", onclick: () => copyText(regeneratePrompt(item), T.labels.regen) }, T.regen),
+      item.caption ? el("button", { class: "btn", onclick: () => copyText(item.caption + (isFilled(item.hashtags) ? "\n\n" + item.hashtags.join(" ") : ""), T.labels.caption) }, T.copyCaption) : null,
+      el("button", { class: "btn primary", onclick: () => dlg.close() }, T.close)
+    ])
+  );
+  if (!dlg.open) dlg.showModal();
+}
+
+/* ---------------- export ---------------- */
+function mergedPlan() {
+  const copy = JSON.parse(JSON.stringify(PLAN));
+  for (const it of copy.items) {
+    it.status = statusOf(it);
+    const local = overlay.checks[it.id] || {};
+    (it.checklist || []).forEach((task, i) => { if (i in local) task.done = local[i]; });
+  }
+  return copy;
+}
+function openExport() {
+  const dlg = document.getElementById("exportDlg");
+  const list = changes();
+  const instruction = list.length
+    ? T.applyIntro(PLAN.week) + "\n" + list.map(c => "- " + c.text).join("\n")
+    : "";
+  const json = JSON.stringify(mergedPlan(), null, 2);
+  const summary = el("textarea", { class: "out", readonly: true }); summary.value = instruction || T.noChanges;
+  const full = el("textarea", { class: "out", readonly: true }); full.value = json;
+  dlg.replaceChildren(
+    el("div", { class: "dlg-head" }, [el("h2", { id: "expTitle", text: T.saveTitle }),
+      el("div", { class: "dlg-sub", text: T.saveSub })]),
+    el("div", { class: "dlg-body" }, [
+      el("section", { class: "field" }, [el("h4", {}, [T.shortVersion, list.length ? el("button", { class: "copy", onclick: () => copyText(instruction, T.labels.changes) }, T.copy) : null]), summary]),
+      el("section", { class: "field" }, [el("h4", {}, [T.fullJson, el("button", { class: "copy", onclick: () => copyText(json, T.labels.plan) }, T.copy)]), full])
+    ]),
+    el("div", { class: "dlg-foot" }, [
+      el("button", { class: "btn", onclick: () => downloadPlan(json) }, T.download),
+      el("button", { class: "btn primary", onclick: () => dlg.close() }, T.done)
+    ])
+  );
+  dlg.showModal();
+}
+function downloadPlan(json) {
+  try {
+    const blob = new Blob([json], { type: "application/json" });
+    const link = el("a", { href: URL.createObjectURL(blob), download: "week-plan-" + PLAN.week + ".json" });
+    document.body.append(link); link.click(); link.remove();
+    toast(T.downloadStarted);
+  } catch (e) { toast(T.downloadBlocked); }
+}
+
+/* ---------------- theme + boot ---------------- */
+function toggleTheme() {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  store.set("acs-theme", root.dataset.theme);
+}
+function renderAll() { renderHeader(); renderProgress(); renderToolbar(); renderNotice(); renderWeek(); }
+
+(function boot() {
+  const theme = store.get("acs-theme");
+  if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+  if (!PLAN || !Array.isArray(PLAN.items)) {
+    document.getElementById("week").replaceChildren(el("div", { class: "empty", text: T.noData }));
+    return;
+  }
+  document.getElementById("foot").textContent =
+    T.footer(PLAN.week, (PLAN.updated_at || "?").replace("T", " "));
+  renderAll();
+  window.matchMedia("(max-width: 760px)").addEventListener("change", renderWeek);
+})();
+</script>
+</body>
+</html>

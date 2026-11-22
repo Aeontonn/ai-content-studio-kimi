@@ -1,0 +1,10 @@
+# user data created while using the skill: never commit it
+content-studio/
+*.zip
+# Python
+__pycache__/
+*.pyc
+.venv/
+# OS
+.DS_Store
+Thumbs.db

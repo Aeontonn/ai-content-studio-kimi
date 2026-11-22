@@ -1,0 +1,59 @@
+{
+  "schema": "ai-content-studio/brand-kit@1",
+  "_placeholder": true,
+  "_help": "Empty strings mean 'not set' and fall back to neutral defaults. Remove _placeholder once filled in. Font files go in brand/fonts/, logo in brand/assets/. Set language to zh-CN for a Chinese calendar and checklists; fonts.cjk is the font for Chinese text on slides.",
+  "brand_name": "",
+  "handle": "",
+  "website": "",
+  "language": "",
+  "timezone": "",
+  "platforms": ["instagram", "tiktok", "youtube_shorts", "email"],
+  "colors": {
+    "primary": "",
+    "secondary": "",
+    "accent": "",
+    "background": "",
+    "text": "",
+    "muted": ""
+  },
+  "fonts": {
+    "heading": { "family": "", "file": "" },
+    "body": { "family": "", "file": "" },
+    "cjk": { "family": "", "file": "" }
+  },
+  "logo": "",
+  "carousel": {
+    "size": "1080x1350",
+    "show_handle": true,
+    "show_slide_numbers": true
+  },
+  "reels": {
+    "crosspost": ["tiktok", "youtube_shorts"],
+    "subtitles": {
+      "font_size": 74,
+      "max_chars_per_line": 26,
+      "max_chars_per_line_cjk": 16,
+      "max_lines": 2,
+      "color": "#FFFFFF",
+      "outline_color": "#000000",
+      "bottom_margin": 620
+    }
+  },
+  "schedule": {
+    "frequency_preset": "balanced",
+    "custom_mix": {},
+    "preferred_days": {
+      "reel": ["tue", "thu", "sat", "mon", "wed", "fri", "sun"],
+      "carousel": ["mon", "wed", "fri", "tue", "thu", "sat", "sun"],
+      "story": ["mon", "wed", "fri", "tue", "thu", "sat", "sun"],
+      "email": ["thu", "mon", "tue", "wed", "fri", "sat", "sun"]
+    },
+    "default_times": {
+      "reel": { "weekday": ["18:00", "12:00"], "weekend": ["11:00", "17:00"] },
+      "carousel": { "weekday": ["12:00", "19:00"], "weekend": ["10:00", "16:00"] },
+      "story": { "weekday": ["08:30", "20:00"], "weekend": ["10:00", "19:30"] },
+      "email": { "weekday": ["08:00"], "weekend": ["09:00"] }
+    },
+    "platform_times": { "tiktok": "19:00", "youtube_shorts": "17:00" }
+  }
+}

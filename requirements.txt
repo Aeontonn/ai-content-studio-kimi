@@ -1,0 +1,8 @@
+# AI Content Studio (Kimi edition) - Python packages
+# Python 3.9 or newer is required for the scripts. Install with:
+#   python -m pip install -r requirements.txt
+#
+# Planning, calendar, exports, brand memory, transcript analysis, cut lists and subtitles
+# need NO packages (standard library only). These two unlock carousel images and decks:
+Pillow>=10.1          # carousel PNG slides, PDF, contact sheets
+python-pptx>=0.6.21   # editable PowerPoint deck of the carousel (also opens in Keynote / Google Slides / Canva)
