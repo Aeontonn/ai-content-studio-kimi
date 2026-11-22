@@ -305,6 +305,14 @@ const I18N = {
   }
 };
 const T = I18N[LANG];
+// labels for the fields inside scripts, story frames and slide outlines
+const KEY_LABELS = {
+  zh: { time: "时间", visual: "画面", voiceover: "口播", on_screen: "画面文字", frame: "帧", text: "文字", sticker: "贴纸",
+        slide: "页", type: "类型", headline: "标题", subhead: "副标题", kicker: "小标题", body: "正文", items: "要点",
+        caption: "文案", title: "标题", quote: "引用", button: "按钮", image: "图片", notes: "备注" },
+  en: {}
+};
+const keyLabel = k => KEY_LABELS[LANG][k] || k.replace(/_/g, " ");
 const STATUSES = ["planned", "drafted", "ready", "published"];
 const STATUS_LABEL = T.status;
 const FORMATS = ["reel", "story", "carousel", "email"];
@@ -376,8 +384,8 @@ function plain(text) { return String(text == null ? "" : text).replace(/\*\*(.+?
 function asText(value) {
   if (value === null || value === undefined) return "";
   if (typeof value === "string") return plain(value);
-  if (Array.isArray(value)) return value.map((v, i) => (i + 1) + ". " + (typeof v === "object" ? Object.entries(v).filter(([, x]) => x !== "" && x != null).map(([k, x]) => k + ": " + x).join(" | ") : v)).join("\n");
-  if (typeof value === "object") return Object.entries(value).map(([k, v]) => k + ": " + asText(v)).join("\n");
+  if (Array.isArray(value)) return value.map((v, i) => (i + 1) + ". " + (typeof v === "object" ? Object.entries(v).filter(([, x]) => x !== "" && x != null).map(([k, x]) => keyLabel(k) + (LANG === "zh" ? "：" : ": ") + plain(x)).join(" | ") : v)).join("\n");
+  if (typeof value === "object") return Object.entries(value).map(([k, v]) => keyLabel(k) + (LANG === "zh" ? "：" : ": ") + asText(v)).join("\n");
   return String(value);
 }
 function isFilled(v) { return v !== null && v !== undefined && (typeof v !== "string" || v.trim() !== "") && (!Array.isArray(v) || v.length) && (typeof v !== "object" || Array.isArray(v) || Object.keys(v).length); }
@@ -526,12 +534,12 @@ function fieldBlock(label, value, copyLabel) {
   if (Array.isArray(value)) {
     content = el("ol", {}, value.map(entry => {
       if (entry && typeof entry === "object") {
-        return el("li", {}, el("dl", { class: "kv" }, Object.entries(entry).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })])));
+        return el("li", {}, el("dl", { class: "kv" }, Object.entries(entry).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: keyLabel(k) }), el("dd", { text: asText(v) })])));
       }
       return el("li", { text: plain(entry) });
     }));
   } else if (value && typeof value === "object") {
-    content = el("dl", { class: "kv" }, Object.entries(value).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: k.replace(/_/g, " ") }), el("dd", { text: asText(v) })]));
+    content = el("dl", { class: "kv" }, Object.entries(value).filter(([, v]) => isFilled(v)).flatMap(([k, v]) => [el("dt", { text: keyLabel(k) }), el("dd", { text: asText(v) })]));
   } else {
     content = el("div", { class: "txt", text: plain(value) });
   }
