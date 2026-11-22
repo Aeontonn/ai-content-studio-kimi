@@ -9,8 +9,8 @@ YouTube Shorts、邮件），带可视化周日历和品牌记忆。支持中文
 
 ## Install / 安装
 
-- **kimi.com:** paste this repository's URL into a Kimi chat: "Please install this skill: <URL>".
-  在 Kimi 对话中发送：「请安装这个技能：<本仓库链接>」。
+- **kimi.com:** in a Kimi chat, send "Please install this skill: https://github.com/Aeontonn/ai-content-studio-kimi".
+  在 Kimi 对话中发送：「请安装这个技能：https://github.com/Aeontonn/ai-content-studio-kimi」。
 - **Kimi Work:** download this repository as a ZIP and upload it under Skills.
   下载本仓库的 ZIP，在 Kimi Work 的「技能」中上传。
 - **Kimi Code:** clone into `~/.agents/skills/ai-content-studio-kimi`.

@@ -87,12 +87,12 @@
       "platform_variants": {},
       "notes": "",
       "revision": 4,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:01",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:14",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -107,7 +107,7 @@
         },
         {
           "revision": 2,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "",
           "previous": {
             "checklist": [
@@ -136,7 +136,7 @@
         },
         {
           "revision": 3,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "status -> published",
           "previous": {
             "status": "drafted"
@@ -255,12 +255,12 @@
       "platform_variants": {},
       "notes": "",
       "revision": 5,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:02",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:15",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -277,7 +277,7 @@
         },
         {
           "revision": 2,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "",
           "previous": {
             "checklist": [
@@ -310,7 +310,7 @@
         },
         {
           "revision": 3,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "status -> ready",
           "previous": {
             "status": "drafted"
@@ -318,7 +318,7 @@
         },
         {
           "revision": 4,
-          "at": "2026-11-21T21:30:02",
+          "at": "2026-11-22T01:22:15",
           "note": "",
           "previous": {
             "thumbnail": ""
@@ -448,12 +448,12 @@
       },
       "notes": "",
       "revision": 4,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:02",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:15",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -481,7 +481,7 @@
         },
         {
           "revision": 2,
-          "at": "2026-11-21T21:30:02",
+          "at": "2026-11-22T01:22:15",
           "note": "",
           "previous": {
             "checklist": [
@@ -530,7 +530,7 @@
         },
         {
           "revision": 3,
-          "at": "2026-11-21T21:30:02",
+          "at": "2026-11-22T01:22:15",
           "note": "status -> ready",
           "previous": {
             "status": "drafted"
@@ -604,12 +604,12 @@
       "platform_variants": {},
       "notes": "",
       "revision": 2,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:01",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:14",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -677,12 +677,12 @@
       "platform_variants": {},
       "notes": "",
       "revision": 2,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:01",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:14",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -816,12 +816,12 @@
       },
       "notes": "",
       "revision": 2,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:03",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:16",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -896,12 +896,12 @@
       "platform_variants": {},
       "notes": "",
       "revision": 2,
-      "created_at": "2026-11-21T21:30:00",
-      "updated_at": "2026-11-21T21:30:01",
+      "created_at": "2026-11-22T01:22:14",
+      "updated_at": "2026-11-22T01:22:14",
       "history": [
         {
           "revision": 1,
-          "at": "2026-11-21T21:30:01",
+          "at": "2026-11-22T01:22:14",
           "note": "初稿",
           "previous": {
             "title": "",
@@ -912,6 +912,6 @@
     }
   ],
   "removed": [],
-  "created_at": "2026-11-21T21:30:00",
-  "updated_at": "2026-11-21T21:30:03"
+  "created_at": "2026-11-22T01:22:14",
+  "updated_at": "2026-11-22T01:22:16"
 }
